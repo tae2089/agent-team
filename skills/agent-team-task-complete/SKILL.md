@@ -25,8 +25,8 @@ agent-team task complete --task TASK_ID --agent AGENT --evidence TEXT --artifact
 
 ## Flags
 
-| Flag         | JSON key   | Required | Default | Description                                                         |
-| ------------ | ---------- | -------- | ------- | ------------------------------------------------------------------- |
+| Flag | JSON key | Required | Default | Description |
+|------|----------|----------|---------|-------------|
 | `--task`     | `task_id`  | yes      | -       | Task to mark `done`.                                                |
 | `--agent`    | `agent`    | yes      | -       | Completing agent; must match the task assignee.                     |
 | `--evidence` | `evidence` | yes      | -       | Verification summary. Mention tests, inspected files, or decisions. |

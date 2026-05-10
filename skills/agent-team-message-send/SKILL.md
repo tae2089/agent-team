@@ -25,8 +25,8 @@ agent-team message send --run RUN_ID --from SENDER --to RECIPIENT --kind KIND --
 
 ## Flags
 
-| Flag         | JSON key   | Required | Default   | Description                                   |
-| ------------ | ---------- | -------- | --------- | --------------------------------------------- |
+| Flag | JSON key | Required | Default | Description |
+|------|----------|----------|---------|-------------|
 | `--run`      | `run_id`   | yes      | -         | Workflow scope.                               |
 | `--from`     | `from`     | yes      | -         | Sender agent or orchestrator role.            |
 | `--to`       | `to`       | yes      | -         | Recipient agent; drives `inbox list --agent`. |

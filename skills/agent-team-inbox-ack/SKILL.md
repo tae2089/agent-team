@@ -25,8 +25,8 @@ agent-team inbox ack --msg MSG_ID --agent AGENT
 
 ## Flags
 
-| Flag      | JSON key | Required | Default | Description                                                   |
-| --------- | -------- | -------- | ------- | ------------------------------------------------------------- |
+| Flag | JSON key | Required | Default | Description |
+|------|----------|----------|---------|-------------|
 | `--msg`   | `msg_id` | yes      | -       | Message to acknowledge.                                       |
 | `--agent` | `agent`  | yes      | -       | Recipient acknowledging the message; must match message `to`. |
 

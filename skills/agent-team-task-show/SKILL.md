@@ -25,8 +25,8 @@ agent-team task show --task TASK_ID
 
 ## Flags
 
-| Flag     | JSON key  | Required | Default | Description      |
-| -------- | --------- | -------- | ------- | ---------------- |
+| Flag | JSON key | Required | Default | Description |
+|------|----------|----------|---------|-------------|
 | `--task` | `task_id` | yes      | -       | Task to inspect. |
 
 ## Examples

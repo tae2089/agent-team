@@ -25,8 +25,8 @@ agent-team task reassign --task TASK_ID --agent NEW_AGENT --reason TEXT
 
 ## Flags
 
-| Flag       | JSON key  | Required | Default | Description                                    |
-| ---------- | --------- | -------- | ------- | ---------------------------------------------- |
+| Flag | JSON key | Required | Default | Description |
+|------|----------|----------|---------|-------------|
 | `--task`   | `task_id` | yes      | -       | Task to move.                                  |
 | `--agent`  | `agent`   | yes      | -       | New assignee.                                  |
 | `--reason` | `reason`  | yes      | -       | Handoff rationale stored in the event payload. |

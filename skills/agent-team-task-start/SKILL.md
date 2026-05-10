@@ -25,8 +25,8 @@ agent-team task start --task TASK_ID --agent AGENT
 
 ## Flags
 
-| Flag      | JSON key  | Required | Default | Description                                    |
-| --------- | --------- | -------- | ------- | ---------------------------------------------- |
+| Flag | JSON key | Required | Default | Description |
+|------|----------|----------|---------|-------------|
 | `--task`  | `task_id` | yes      | -       | Task to claim as `in_progress`.                |
 | `--agent` | `agent`   | yes      | -       | Caller identity; must match the task assignee. |
 

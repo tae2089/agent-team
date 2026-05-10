@@ -25,8 +25,8 @@ agent-team schema export
 
 ## Flags
 
-| Flag | JSON key | Required | Default | Description                                      |
-| ---- | -------- | -------- | ------- | ------------------------------------------------ |
+| Flag | JSON key | Required | Default | Description |
+|------|----------|----------|---------|-------------|
 | none | none     | no       | none    | This command accepts no command-specific inputs. |
 
 ## Examples

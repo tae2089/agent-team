@@ -25,8 +25,8 @@ agent-team run list [--status STATUS] [--limit N] [--after-version VERSION]
 
 ## Flags
 
-| Flag              | JSON key        | Required | Default | Description                                                                     |
-| ----------------- | --------------- | -------- | ------- | ------------------------------------------------------------------------------- |
+| Flag | JSON key | Required | Default | Description |
+|------|----------|----------|---------|-------------|
 | `--status`        | `status`        | no       | empty   | Exact run status filter, normally `open` or `closed`; empty means all statuses. |
 | `--limit`         | `limit`         | no       | `100`   | Maximum rows returned, capped at 1000.                                          |
 | `--after-version` | `after_version` | no       | `0`     | Only include runs changed after this state version.                             |

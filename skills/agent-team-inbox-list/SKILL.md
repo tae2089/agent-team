@@ -25,8 +25,8 @@ agent-team inbox list --agent AGENT [--run RUN_ID] [--unread]
 
 ## Flags
 
-| Flag       | JSON key | Required | Default | Description                                                   |
-| ---------- | -------- | -------- | ------- | ------------------------------------------------------------- |
+| Flag | JSON key | Required | Default | Description |
+|------|----------|----------|---------|-------------|
 | `--agent`  | `agent`  | yes      | -       | Recipient inbox to read.                                      |
 | `--run`    | `run_id` | no       | empty   | Restrict messages to one workflow; empty means all workflows. |
 | `--unread` | `unread` | no       | `false` | Return only messages where `acked_at` is empty.               |

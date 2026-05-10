@@ -25,8 +25,8 @@ agent-team task block --task TASK_ID --agent AGENT --reason TEXT
 
 ## Flags
 
-| Flag       | JSON key  | Required | Default | Description                                                                  |
-| ---------- | --------- | -------- | ------- | ---------------------------------------------------------------------------- |
+| Flag | JSON key | Required | Default | Description |
+|------|----------|----------|---------|-------------|
 | `--task`   | `task_id` | yes      | -       | Task to mark `blocked`.                                                      |
 | `--agent`  | `agent`   | yes      | -       | Reporting agent; must match the task assignee.                               |
 | `--reason` | `reason`  | yes      | -       | Actionable blocker: missing input, decision, dependency, or error condition. |

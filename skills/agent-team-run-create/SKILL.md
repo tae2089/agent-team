@@ -25,8 +25,8 @@ agent-team run create --title TITLE [--id RUN_ID]
 
 ## Flags
 
-| Flag      | JSON key | Required | Default   | Description                                                   |
-| --------- | -------- | -------- | --------- | ------------------------------------------------------------- |
+| Flag | JSON key | Required | Default | Description |
+|------|----------|----------|---------|-------------|
 | `--title` | `title`  | yes      | -         | Short workflow label shown in run lists and status output.    |
 | `--id`    | `id`     | no       | generated | Stable run ID. Use only when scripts or docs need a known ID. |
 

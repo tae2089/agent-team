@@ -25,8 +25,8 @@ agent-team event log [--run RUN_ID] [--entity-type TYPE] [--entity ID] [--type E
 
 ## Flags
 
-| Flag              | JSON key        | Required | Default | Description                                                                                    |
-| ----------------- | --------------- | -------- | ------- | ---------------------------------------------------------------------------------------------- |
+| Flag | JSON key | Required | Default | Description |
+|------|----------|----------|---------|-------------|
 | `--run`           | `run_id`        | no       | empty   | Restrict events to one workflow; empty means all runs.                                         |
 | `--entity-type`   | `entity_type`   | no       | empty   | Restrict by entity type, usually `run`, `task`, or `message`; empty means all entity types.    |
 | `--entity`        | `entity_id`     | no       | empty   | Restrict to one entity ID; empty means all entities.                                           |

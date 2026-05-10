@@ -25,8 +25,8 @@ agent-team task retry --task TASK_ID --reason TEXT
 
 ## Flags
 
-| Flag       | JSON key  | Required | Default | Description                                  |
-| ---------- | --------- | -------- | ------- | -------------------------------------------- |
+| Flag | JSON key | Required | Default | Description |
+|------|----------|----------|---------|-------------|
 | `--task`   | `task_id` | yes      | -       | Task to reset to `pending`.                  |
 | `--reason` | `reason`  | yes      | -       | Retry rationale stored in the event payload. |
 

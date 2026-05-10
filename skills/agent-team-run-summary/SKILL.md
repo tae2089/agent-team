@@ -25,8 +25,8 @@ agent-team run summary --run RUN_ID [--recent-limit N]
 
 ## Flags
 
-| Flag             | JSON key       | Required | Default | Description                                        |
-| ---------------- | -------------- | -------- | ------- | -------------------------------------------------- |
+| Flag | JSON key | Required | Default | Description |
+|------|----------|----------|---------|-------------|
 | `--run`          | `run_id`       | yes      | -       | Run to summarize.                                  |
 | `--recent-limit` | `recent_limit` | no       | `10`    | Number of recent events to include, capped at 100. |
 

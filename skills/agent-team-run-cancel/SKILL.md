@@ -25,8 +25,8 @@ agent-team run cancel --run RUN_ID --reason TEXT
 
 ## Flags
 
-| Flag       | JSON key | Required | Default | Description                                         |
-| ---------- | -------- | -------- | ------- | --------------------------------------------------- |
+| Flag | JSON key | Required | Default | Description |
+|------|----------|----------|---------|-------------|
 | `--run`    | `run_id` | yes      | -       | Run to cancel.                                      |
 | `--reason` | `reason` | yes      | -       | Cancellation rationale stored in the event payload. |
 

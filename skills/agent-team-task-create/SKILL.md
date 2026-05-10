@@ -25,8 +25,8 @@ agent-team task create --run RUN_ID --agent AGENT --title TITLE [--id TASK_ID] [
 
 ## Flags
 
-| Flag           | JSON key     | Required | Default   | Description                                                   |
-| -------------- | ------------ | -------- | --------- | ------------------------------------------------------------- |
+| Flag | JSON key | Required | Default | Description |
+|------|----------|----------|---------|-------------|
 | `--run`        | `run_id`     | yes      | -         | Owning workflow run.                                          |
 | `--agent`      | `agent`      | yes      | -         | Assignee expected to start, block, or complete the task.      |
 | `--title`      | `title`      | yes      | -         | Compact task label. Put detailed instructions in `--body`.    |

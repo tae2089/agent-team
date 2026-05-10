@@ -25,8 +25,8 @@ agent-team run status --run RUN_ID
 
 ## Flags
 
-| Flag    | JSON key | Required | Default | Description     |
-| ------- | -------- | -------- | ------- | --------------- |
+| Flag | JSON key | Required | Default | Description |
+|------|----------|----------|---------|-------------|
 | `--run` | `run_id` | yes      | -       | Run to inspect. |
 
 ## Examples

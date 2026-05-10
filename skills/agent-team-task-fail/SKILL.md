@@ -25,8 +25,8 @@ agent-team task fail --task TASK_ID --agent AGENT --reason TEXT [--artifact PATH
 
 ## Flags
 
-| Flag         | JSON key   | Required | Default | Description                                    |
-| ------------ | ---------- | -------- | ------- | ---------------------------------------------- |
+| Flag | JSON key | Required | Default | Description |
+|------|----------|----------|---------|-------------|
 | `--task`     | `task_id`  | yes      | -       | Task to mark failed.                           |
 | `--agent`    | `agent`    | yes      | -       | Reporting agent; must match task assignee.     |
 | `--reason`   | `reason`   | yes      | -       | Failure rationale stored in the event payload. |

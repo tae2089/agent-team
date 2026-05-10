@@ -25,8 +25,8 @@ agent-team task stale --run RUN_ID --older-than DURATION [--limit N] [--after-ve
 
 ## Flags
 
-| Flag              | JSON key        | Required | Default | Description                                          |
-| ----------------- | --------------- | -------- | ------- | ---------------------------------------------------- |
+| Flag | JSON key | Required | Default | Description |
+|------|----------|----------|---------|-------------|
 | `--run`           | `run_id`        | yes      | -       | Run to inspect.                                      |
 | `--older-than`    | `older_than`    | yes      | -       | Go duration such as `30m`, `2h`, or `24h`.           |
 | `--limit`         | `limit`         | no       | `100`   | Maximum rows returned, capped at 1000.               |

@@ -25,8 +25,8 @@ agent-team task list [--run RUN_ID] [--agent AGENT] [--status STATUS] [--limit N
 
 ## Flags
 
-| Flag              | JSON key        | Required | Default | Description                                          |
-| ----------------- | --------------- | -------- | ------- | ---------------------------------------------------- |
+| Flag | JSON key | Required | Default | Description |
+|------|----------|----------|---------|-------------|
 | `--run`           | `run_id`        | no       | empty   | Limit tasks to one run; empty means all runs.        |
 | `--agent`         | `agent`         | no       | empty   | Limit tasks to one assignee; empty means all agents. |
 | `--status`        | `status`        | no       | empty   | Exact task status filter; empty means all statuses.  |

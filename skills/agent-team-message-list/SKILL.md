@@ -25,8 +25,8 @@ agent-team message list --run RUN_ID [--task TASK_ID] [--from SENDER] [--to RECI
 
 ## Flags
 
-| Flag              | JSON key        | Required | Default | Description                                             |
-| ----------------- | --------------- | -------- | ------- | ------------------------------------------------------- |
+| Flag | JSON key | Required | Default | Description |
+|------|----------|----------|---------|-------------|
 | `--run`           | `run_id`        | yes      | -       | Workflow scope for the query.                           |
 | `--task`          | `task_id`       | no       | empty   | Restrict messages to one task; empty means all tasks.   |
 | `--from`          | `from`          | no       | empty   | Restrict by sender; empty means all senders.            |

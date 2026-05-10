@@ -25,8 +25,8 @@ agent-team run close --run RUN_ID [--reason TEXT]
 
 ## Flags
 
-| Flag       | JSON key | Required | Default | Description                                            |
-| ---------- | -------- | -------- | ------- | ------------------------------------------------------ |
+| Flag | JSON key | Required | Default | Description |
+|------|----------|----------|---------|-------------|
 | `--run`    | `run_id` | yes      | -       | Run to close.                                          |
 | `--reason` | `reason` | no       | empty   | Closure note stored in the `run_closed` event payload. |
 
