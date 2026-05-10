@@ -17,6 +17,11 @@ jobs:
           go-version-file: go.mod
           cache: true
 
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
       - name: Download dependencies
         run: go mod download
 
@@ -25,6 +30,9 @@ jobs:
 
       - name: Test
         run: go test ./...
+
+      - name: NPM package check
+        run: npm run test:npm
 
       - name: Skill and docs drift guard
         run: sh scripts/ci-drift-check.sh

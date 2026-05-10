@@ -45,7 +45,7 @@ agent-team_vX.Y.Z_windows_arm64.exe
 SHA256SUMS
 ```
 
-The npm package `@tae2089/agent-team` is a small CLI wrapper. Its postinstall step downloads one of these release binaries and verifies it against `SHA256SUMS`.
+The npm package `@tae2089/agent-team` is a small CLI wrapper. Its postinstall step downloads one of these release binaries and verifies it against `SHA256SUMS`. Tag releases publish the package after the GitHub Release is created, using the `NPM_TOKEN` repository secret.
 
 ## Checklist
 
@@ -67,8 +67,8 @@ Then:
 4. Confirm GitHub Release artifacts and `SHA256SUMS` are present.
 5. Download one binary, verify checksum, and confirm `agent-team version`.
 6. Confirm `package.json` version matches the release tag without the leading `v`.
-7. Run `npm --cache /tmp/agent-team-npm-cache pack --dry-run`.
-8. Publish with `npm publish --access public`.
+7. Confirm the npm publish job completed.
+8. Optionally run `npm --cache /tmp/agent-team-npm-cache pack --dry-run` locally before tagging when package metadata changes.
 
 The npm package name is scoped because the unscoped `agent-team` name is already owned by another publisher on npm.
 
