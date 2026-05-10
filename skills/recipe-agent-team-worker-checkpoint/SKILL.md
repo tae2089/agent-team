@@ -2,7 +2,7 @@
 name: recipe-agent-team-worker-checkpoint
 description: "Recipe: Worker checkpoint flow for inbox, sync, start, complete, or block decisions."
 metadata:
-  version: 1.1.0
+  version: 1.0.0
   openclaw:
     category: "recipe"
     domain: "agent-orchestration"
@@ -66,4 +66,3 @@ agent-team task block --task TASK_ID --agent AGENT --reason "specific blocker"
 - If `data.sync.blocking` is true, do not complete unless the orchestrator explicitly approves `--force`.
 - Evidence should say what was verified, not just that work is done.
 - Artifact paths should be run-scoped.
-

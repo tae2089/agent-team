@@ -2,7 +2,7 @@
 name: agent-team-task-retry
 description: "agent-team: Reset a blocked or in-progress task to pending."
 metadata:
-  version: 1.1.0
+  version: 1.0.0
   openclaw:
     category: "agent-orchestration"
   requires:
@@ -25,10 +25,10 @@ agent-team task retry --task TASK_ID --reason TEXT
 
 ## Flags
 
-| Flag | JSON key | Required | Default | Description |
-|------|----------|----------|---------|-------------|
-| `--task` | `task_id` | yes | - | Task to reset to `pending`. |
-| `--reason` | `reason` | yes | - | Retry rationale stored in the event payload. |
+| Flag       | JSON key  | Required | Default | Description                                  |
+| ---------- | --------- | -------- | ------- | -------------------------------------------- |
+| `--task`   | `task_id` | yes      | -       | Task to reset to `pending`.                  |
+| `--reason` | `reason`  | yes      | -       | Retry rationale stored in the event payload. |
 
 ## Examples
 
@@ -44,10 +44,10 @@ agent-team task retry --params '{"task_id":"task_docs","reason":"API schema is n
 
 ## Errors
 
-| Code | Meaning | Action |
-|------|---------|--------|
+| Code                 | Meaning                                            | Action                                         |
+| -------------------- | -------------------------------------------------- | ---------------------------------------------- |
 | `invalid_task_state` | Task is not `blocked`, `in_progress`, or `failed`. | Inspect task and choose the correct operation. |
-| `validation_error` | Required field is missing. | Provide task and reason. |
+| `validation_error`   | Required field is missing.                         | Provide task and reason.                       |
 
 ## See Also
 

@@ -12,6 +12,12 @@ Install with Go:
 go install github.com/tae2089/agent-team/cmd/agent-team@latest
 ```
 
+Install with npm:
+
+```bash
+npm install -g @tae2089/agent-team
+```
+
 From this repository:
 
 ```bash

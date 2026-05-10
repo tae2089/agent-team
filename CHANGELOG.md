@@ -15,6 +15,7 @@ The project is pre-v1. Until v1, CLI behavior is intended to be stable within th
 - Stress profiles for CI smoke and local heavy runs.
 - Structured `error.recovery` hints in failure JSON and schema export.
 - Error recovery and Codex/Gemini sandbox permission documentation.
+- npm package metadata and installer wrapper for `@tae2089/agent-team`.
 
 ### Changed
 

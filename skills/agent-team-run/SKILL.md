@@ -2,7 +2,7 @@
 name: agent-team-run
 description: "Service-level skill for agent-team run commands. Use when creating, listing, checking, or closing daemonless workflow runs. Load agent-team-shared first."
 metadata:
-  version: 1.1.0
+  version: 1.0.0
   openclaw:
     category: "agent-orchestration"
   requires:
@@ -23,14 +23,14 @@ agent-team run <command> [flags]
 
 ## Helper Commands
 
-| Command | Description |
-|---------|-------------|
-| [`create`](../agent-team-run-create/SKILL.md) | Create a workflow run. |
-| [`status`](../agent-team-run-status/SKILL.md) | Show one run and task status counts. |
+| Command                                         | Description                                       |
+| ----------------------------------------------- | ------------------------------------------------- |
+| [`create`](../agent-team-run-create/SKILL.md)   | Create a workflow run.                            |
+| [`status`](../agent-team-run-status/SKILL.md)   | Show one run and task status counts.              |
 | [`summary`](../agent-team-run-summary/SKILL.md) | Show operational run summary and close readiness. |
-| [`list`](../agent-team-run-list/SKILL.md) | List runs, optionally filtered by status. |
-| [`close`](../agent-team-run-close/SKILL.md) | Close a run after all tasks are done. |
-| [`cancel`](../agent-team-run-cancel/SKILL.md) | Cancel an open run. |
+| [`list`](../agent-team-run-list/SKILL.md)       | List runs, optionally filtered by status.         |
+| [`close`](../agent-team-run-close/SKILL.md)     | Close a run after all tasks are done.             |
+| [`cancel`](../agent-team-run-cancel/SKILL.md)   | Cancel an open run.                               |
 
 ## Command Notes
 

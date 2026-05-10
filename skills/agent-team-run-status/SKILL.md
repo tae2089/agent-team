@@ -2,7 +2,7 @@
 name: agent-team-run-status
 description: "agent-team: Show one workflow run and grouped task status counts."
 metadata:
-  version: 1.1.0
+  version: 1.0.0
   openclaw:
     category: "agent-orchestration"
   requires:
@@ -25,9 +25,9 @@ agent-team run status --run RUN_ID
 
 ## Flags
 
-| Flag | JSON key | Required | Default | Description |
-|------|----------|----------|---------|-------------|
-| `--run` | `run_id` | yes | - | Run to inspect. |
+| Flag    | JSON key | Required | Default | Description     |
+| ------- | -------- | -------- | ------- | --------------- |
+| `--run` | `run_id` | yes      | -       | Run to inspect. |
 
 ## Examples
 
@@ -43,13 +43,12 @@ agent-team run status --params '{"run_id":"run_docs"}'
 
 ## Errors
 
-| Code | Meaning | Action |
-|------|---------|--------|
-| `validation_error` | `run_id` is missing. | Provide `--run`. |
-| `not_found` | Run does not exist. | Check the run ID. |
+| Code               | Meaning              | Action            |
+| ------------------ | -------------------- | ----------------- |
+| `validation_error` | `run_id` is missing. | Provide `--run`.  |
+| `not_found`        | Run does not exist.  | Check the run ID. |
 
 ## See Also
 
 - [agent-team-run-list](../agent-team-run-list/SKILL.md)
 - [agent-team-task-list](../agent-team-task-list/SKILL.md)
-

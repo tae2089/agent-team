@@ -2,7 +2,7 @@
 name: agent-team-run-list
 description: "agent-team: List workflow runs, optionally filtered by status."
 metadata:
-  version: 1.1.0
+  version: 1.0.0
   openclaw:
     category: "agent-orchestration"
   requires:
@@ -25,11 +25,11 @@ agent-team run list [--status STATUS] [--limit N] [--after-version VERSION]
 
 ## Flags
 
-| Flag | JSON key | Required | Default | Description |
-|------|----------|----------|---------|-------------|
-| `--status` | `status` | no | empty | Exact run status filter, normally `open` or `closed`; empty means all statuses. |
-| `--limit` | `limit` | no | `100` | Maximum rows returned, capped at 1000. |
-| `--after-version` | `after_version` | no | `0` | Only include runs changed after this state version. |
+| Flag              | JSON key        | Required | Default | Description                                                                     |
+| ----------------- | --------------- | -------- | ------- | ------------------------------------------------------------------------------- |
+| `--status`        | `status`        | no       | empty   | Exact run status filter, normally `open` or `closed`; empty means all statuses. |
+| `--limit`         | `limit`         | no       | `100`   | Maximum rows returned, capped at 1000.                                          |
+| `--after-version` | `after_version` | no       | `0`     | Only include runs changed after this state version.                             |
 
 ## Examples
 
@@ -45,8 +45,8 @@ agent-team run list --params '{"status":"closed","limit":50}'
 
 ## Errors
 
-| Code | Meaning | Action |
-|------|---------|--------|
+| Code             | Meaning                               | Action                  |
+| ---------------- | ------------------------------------- | ----------------------- |
 | `input_conflict` | Same value supplied by flag and JSON. | Provide the value once. |
 
 ## See Also

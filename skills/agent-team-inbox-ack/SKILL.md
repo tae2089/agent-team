@@ -2,7 +2,7 @@
 name: agent-team-inbox-ack
 description: "agent-team: Acknowledge a message after handling it."
 metadata:
-  version: 1.1.0
+  version: 1.0.0
   openclaw:
     category: "agent-orchestration"
   requires:
@@ -25,10 +25,10 @@ agent-team inbox ack --msg MSG_ID --agent AGENT
 
 ## Flags
 
-| Flag | JSON key | Required | Default | Description |
-|------|----------|----------|---------|-------------|
-| `--msg` | `msg_id` | yes | - | Message to acknowledge. |
-| `--agent` | `agent` | yes | - | Recipient acknowledging the message; must match message `to`. |
+| Flag      | JSON key | Required | Default | Description                                                   |
+| --------- | -------- | -------- | ------- | ------------------------------------------------------------- |
+| `--msg`   | `msg_id` | yes      | -       | Message to acknowledge.                                       |
+| `--agent` | `agent`  | yes      | -       | Recipient acknowledging the message; must match message `to`. |
 
 ## Examples
 
@@ -39,13 +39,12 @@ agent-team inbox ack --params '{"msg_id":"msg_contract","agent":"writer"}'
 
 ## Errors
 
-| Code | Meaning | Action |
-|------|---------|--------|
+| Code             | Meaning                             | Action                                          |
+| ---------------- | ----------------------------------- | ----------------------------------------------- |
 | `agent_mismatch` | Agent is not the message recipient. | Use the recipient agent or inspect the message. |
-| `not_found` | Message does not exist. | Check the message ID. |
+| `not_found`      | Message does not exist.             | Check the message ID.                           |
 
 ## See Also
 
 - [agent-team-inbox-list](../agent-team-inbox-list/SKILL.md)
 - [agent-team-sync-check](../agent-team-sync-check/SKILL.md)
-

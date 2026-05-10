@@ -2,7 +2,7 @@
 name: recipe-agent-team-operational-audit
 description: "Recipe: Audit agent-team runs, messages, events, and schema without a daemon."
 metadata:
-  version: 1.1.0
+  version: 1.0.0
   openclaw:
     category: "recipe"
     domain: "agent-orchestration"

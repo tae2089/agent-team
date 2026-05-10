@@ -2,7 +2,7 @@
 name: recipe-agent-team-run-lifecycle
 description: "Recipe: Create, execute, and close a daemonless agent-team workflow run."
 metadata:
-  version: 1.1.0
+  version: 1.0.0
   openclaw:
     category: "recipe"
     domain: "agent-orchestration"
@@ -75,4 +75,3 @@ agent-team run close --run RUN_ID --reason "all tasks complete"
 - Do not close a run with unfinished tasks.
 - Use `_workspace/{run_id}/` for artifacts.
 - Use messages for contract changes instead of direct peer-to-peer updates.
-

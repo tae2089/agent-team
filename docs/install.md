@@ -14,6 +14,16 @@ From a local checkout:
 go install ./cmd/agent-team
 ```
 
+## npm Install
+
+```bash
+npm install -g @tae2089/agent-team
+agent-team version
+agent-team --help
+```
+
+The npm package installs the `agent-team` command and downloads the matching platform binary from the GitHub release for that package version. Publish the npm package only after the matching `vX.Y.Z` GitHub release and `SHA256SUMS` are available.
+
 ## Release Binary
 
 Download the binary for your OS and architecture from the GitHub release page.

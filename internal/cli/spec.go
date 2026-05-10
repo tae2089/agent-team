@@ -37,7 +37,7 @@ type FlagSpec struct {
 func cliSchema() SchemaSpec {
 	spec := SchemaSpec{
 		Command: "agent-team",
-		Version: "1.3.0",
+		Version: "1.0.0",
 		Commands: []CommandSpec{
 			{
 				Name: "init",

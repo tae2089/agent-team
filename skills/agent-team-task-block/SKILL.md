@@ -2,7 +2,7 @@
 name: agent-team-task-block
 description: "agent-team: Mark an assigned task blocked with an actionable reason."
 metadata:
-  version: 1.1.0
+  version: 1.0.0
   openclaw:
     category: "agent-orchestration"
   requires:
@@ -25,11 +25,11 @@ agent-team task block --task TASK_ID --agent AGENT --reason TEXT
 
 ## Flags
 
-| Flag | JSON key | Required | Default | Description |
-|------|----------|----------|---------|-------------|
-| `--task` | `task_id` | yes | - | Task to mark `blocked`. |
-| `--agent` | `agent` | yes | - | Reporting agent; must match the task assignee. |
-| `--reason` | `reason` | yes | - | Actionable blocker: missing input, decision, dependency, or error condition. |
+| Flag       | JSON key  | Required | Default | Description                                                                  |
+| ---------- | --------- | -------- | ------- | ---------------------------------------------------------------------------- |
+| `--task`   | `task_id` | yes      | -       | Task to mark `blocked`.                                                      |
+| `--agent`  | `agent`   | yes      | -       | Reporting agent; must match the task assignee.                               |
+| `--reason` | `reason`  | yes      | -       | Actionable blocker: missing input, decision, dependency, or error condition. |
 
 ## Examples
 
@@ -40,13 +40,12 @@ agent-team task block --params '{"task_id":"task_docs","agent":"writer","reason"
 
 ## Errors
 
-| Code | Meaning | Action |
-|------|---------|--------|
-| `agent_mismatch` | Agent is not the task assignee. | Reassign or use the assigned agent. |
-| `validation_error` | Required field is missing. | Provide task, agent, and reason. |
+| Code               | Meaning                         | Action                              |
+| ------------------ | ------------------------------- | ----------------------------------- |
+| `agent_mismatch`   | Agent is not the task assignee. | Reassign or use the assigned agent. |
+| `validation_error` | Required field is missing.      | Provide task, agent, and reason.    |
 
 ## See Also
 
 - [agent-team-task-reassign](../agent-team-task-reassign/SKILL.md)
 - [agent-team-task-retry](../agent-team-task-retry/SKILL.md)
-

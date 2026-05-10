@@ -2,7 +2,7 @@
 name: agent-team-task-list
 description: "agent-team: List tasks with optional run, agent, or status filters."
 metadata:
-  version: 1.1.0
+  version: 1.0.0
   openclaw:
     category: "agent-orchestration"
   requires:
@@ -25,13 +25,13 @@ agent-team task list [--run RUN_ID] [--agent AGENT] [--status STATUS] [--limit N
 
 ## Flags
 
-| Flag | JSON key | Required | Default | Description |
-|------|----------|----------|---------|-------------|
-| `--run` | `run_id` | no | empty | Limit tasks to one run; empty means all runs. |
-| `--agent` | `agent` | no | empty | Limit tasks to one assignee; empty means all agents. |
-| `--status` | `status` | no | empty | Exact task status filter; empty means all statuses. |
-| `--limit` | `limit` | no | `100` | Maximum rows returned, capped at 1000. |
-| `--after-version` | `after_version` | no | `0` | Only include tasks changed after this state version. |
+| Flag              | JSON key        | Required | Default | Description                                          |
+| ----------------- | --------------- | -------- | ------- | ---------------------------------------------------- |
+| `--run`           | `run_id`        | no       | empty   | Limit tasks to one run; empty means all runs.        |
+| `--agent`         | `agent`         | no       | empty   | Limit tasks to one assignee; empty means all agents. |
+| `--status`        | `status`        | no       | empty   | Exact task status filter; empty means all statuses.  |
+| `--limit`         | `limit`         | no       | `100`   | Maximum rows returned, capped at 1000.               |
+| `--after-version` | `after_version` | no       | `0`     | Only include tasks changed after this state version. |
 
 ## Examples
 
@@ -47,8 +47,8 @@ agent-team task list --params '{"run_id":"run_docs","status":"blocked","limit":5
 
 ## Errors
 
-| Code | Meaning | Action |
-|------|---------|--------|
+| Code             | Meaning                               | Action                  |
+| ---------------- | ------------------------------------- | ----------------------- |
 | `input_conflict` | Same value supplied by flag and JSON. | Provide the value once. |
 
 ## See Also

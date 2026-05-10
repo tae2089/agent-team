@@ -2,7 +2,7 @@
 name: agent-team-schema-export
 description: "agent-team: Export the machine-readable CLI command and error contract."
 metadata:
-  version: 1.2.0
+  version: 1.0.0
   openclaw:
     category: "agent-orchestration"
   requires:
@@ -25,9 +25,9 @@ agent-team schema export
 
 ## Flags
 
-| Flag | JSON key | Required | Default | Description |
-|------|----------|----------|---------|-------------|
-| none | none | no | none | This command accepts no command-specific inputs. |
+| Flag | JSON key | Required | Default | Description                                      |
+| ---- | -------- | -------- | ------- | ------------------------------------------------ |
+| none | none     | no       | none    | This command accepts no command-specific inputs. |
 
 ## Examples
 
@@ -45,8 +45,8 @@ agent-team schema export
 
 ## Errors
 
-| Code | Meaning | Action |
-|------|---------|--------|
+| Code               | Meaning                             | Action                            |
+| ------------------ | ----------------------------------- | --------------------------------- |
 | `validation_error` | Positional arguments were provided. | Run without positional arguments. |
 
 ## See Also

@@ -2,7 +2,7 @@
 name: agent-team-sync-check
 description: "agent-team: Check unresolved inbox messages and incomplete dependencies before proceeding."
 metadata:
-  version: 1.1.0
+  version: 1.0.0
   openclaw:
     category: "agent-orchestration"
   requires:
@@ -25,11 +25,11 @@ agent-team sync check --agent AGENT [--run RUN_ID] [--task TASK_ID]
 
 ## Flags
 
-| Flag | JSON key | Required | Default | Description |
-|------|----------|----------|---------|-------------|
-| `--agent` | `agent` | yes | - | Agent whose inbox and task context are checked. |
-| `--run` | `run_id` | no | empty | Restrict check to one workflow; empty means all workflows. |
-| `--task` | `task_id` | no | empty | Also check incomplete dependencies for this task; empty skips task-specific dependency checks. |
+| Flag      | JSON key  | Required | Default | Description                                                                                    |
+| --------- | --------- | -------- | ------- | ---------------------------------------------------------------------------------------------- |
+| `--agent` | `agent`   | yes      | -       | Agent whose inbox and task context are checked.                                                |
+| `--run`   | `run_id`  | no       | empty   | Restrict check to one workflow; empty means all workflows.                                     |
+| `--task`  | `task_id` | no       | empty   | Also check incomplete dependencies for this task; empty skips task-specific dependency checks. |
 
 ## Examples
 
@@ -47,8 +47,8 @@ agent-team sync check --params '{"agent":"writer","run_id":"run_docs","task_id":
 
 ## Errors
 
-| Code | Meaning | Action |
-|------|---------|--------|
+| Code               | Meaning             | Action             |
+| ------------------ | ------------------- | ------------------ |
 | `validation_error` | `agent` is missing. | Provide `--agent`. |
 
 ## See Also

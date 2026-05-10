@@ -2,7 +2,7 @@
 name: agent-team-task-complete
 description: "agent-team: Complete an assigned task with evidence and artifact path."
 metadata:
-  version: 1.1.0
+  version: 1.0.0
   openclaw:
     category: "agent-orchestration"
   requires:
@@ -25,13 +25,13 @@ agent-team task complete --task TASK_ID --agent AGENT --evidence TEXT --artifact
 
 ## Flags
 
-| Flag | JSON key | Required | Default | Description |
-|------|----------|----------|---------|-------------|
-| `--task` | `task_id` | yes | - | Task to mark `done`. |
-| `--agent` | `agent` | yes | - | Completing agent; must match the task assignee. |
-| `--evidence` | `evidence` | yes | - | Verification summary. Mention tests, inspected files, or decisions. |
-| `--artifact` | `artifact` | yes | - | Result path, normally under `_workspace/{run_id}/`. |
-| `--force` | `force` | no | `false` | Bypass sync conflict after explicit orchestrator approval. |
+| Flag         | JSON key   | Required | Default | Description                                                         |
+| ------------ | ---------- | -------- | ------- | ------------------------------------------------------------------- |
+| `--task`     | `task_id`  | yes      | -       | Task to mark `done`.                                                |
+| `--agent`    | `agent`    | yes      | -       | Completing agent; must match the task assignee.                     |
+| `--evidence` | `evidence` | yes      | -       | Verification summary. Mention tests, inspected files, or decisions. |
+| `--artifact` | `artifact` | yes      | -       | Result path, normally under `_workspace/{run_id}/`.                 |
+| `--force`    | `force`    | no       | `false` | Bypass sync conflict after explicit orchestrator approval.          |
 
 ## Examples
 
@@ -43,14 +43,13 @@ agent-team task complete --params '{"task_id":"task_docs","agent":"writer","forc
 
 ## Errors
 
-| Code | Meaning | Action |
-|------|---------|--------|
-| `agent_mismatch` | Agent is not the task assignee. | Reassign or use the assigned agent. |
-| `sync_conflict` | Unread messages or incomplete dependencies. | Run sync check, resolve issues, then retry. |
-| `validation_error` | Required field is missing. | Provide task, agent, evidence, and artifact. |
+| Code               | Meaning                                     | Action                                       |
+| ------------------ | ------------------------------------------- | -------------------------------------------- |
+| `agent_mismatch`   | Agent is not the task assignee.             | Reassign or use the assigned agent.          |
+| `sync_conflict`    | Unread messages or incomplete dependencies. | Run sync check, resolve issues, then retry.  |
+| `validation_error` | Required field is missing.                  | Provide task, agent, evidence, and artifact. |
 
 ## See Also
 
 - [agent-team-sync-check](../agent-team-sync-check/SKILL.md)
 - [agent-team-task-block](../agent-team-task-block/SKILL.md)
-

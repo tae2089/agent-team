@@ -2,7 +2,7 @@
 name: agent-team-task-show
 description: "agent-team: Show one task and its dependency IDs."
 metadata:
-  version: 1.1.0
+  version: 1.0.0
   openclaw:
     category: "agent-orchestration"
   requires:
@@ -25,9 +25,9 @@ agent-team task show --task TASK_ID
 
 ## Flags
 
-| Flag | JSON key | Required | Default | Description |
-|------|----------|----------|---------|-------------|
-| `--task` | `task_id` | yes | - | Task to inspect. |
+| Flag     | JSON key  | Required | Default | Description      |
+| -------- | --------- | -------- | ------- | ---------------- |
+| `--task` | `task_id` | yes      | -       | Task to inspect. |
 
 ## Examples
 
@@ -43,13 +43,12 @@ agent-team task show --params '{"task_id":"task_docs"}'
 
 ## Errors
 
-| Code | Meaning | Action |
-|------|---------|--------|
-| `not_found` | Task does not exist. | Check the task ID. |
-| `validation_error` | `task_id` is missing. | Provide `--task`. |
+| Code               | Meaning               | Action             |
+| ------------------ | --------------------- | ------------------ |
+| `not_found`        | Task does not exist.  | Check the task ID. |
+| `validation_error` | `task_id` is missing. | Provide `--task`.  |
 
 ## See Also
 
 - [agent-team-task-list](../agent-team-task-list/SKILL.md)
 - [agent-team-sync-check](../agent-team-sync-check/SKILL.md)
-

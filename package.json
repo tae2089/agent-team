@@ -1,0 +1,48 @@
+{
+  "name": "@tae2089/agent-team",
+  "version": "1.0.0",
+  "description": "Daemonless CLI for coordinating agent workflows through durable local state.",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tae2089/agent-team.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tae2089/agent-team/issues"
+  },
+  "homepage": "https://github.com/tae2089/agent-team#readme",
+  "keywords": [
+    "agent",
+    "cli",
+    "workflow",
+    "coordination",
+    "sqlite"
+  ],
+  "bin": {
+    "agent-team": "npm/bin/agent-team.js"
+  },
+  "files": [
+    "npm/bin/agent-team.js",
+    "npm/install.js",
+    "README.md",
+    "CHANGELOG.md",
+    "docs/install.md",
+    "docs/release.md",
+    "docs/errors.md",
+    "docs/status-policy.md",
+    "docs/harness-runtime-context.md",
+    "docs/harness-sandbox-permissions.md"
+  ],
+  "scripts": {
+    "postinstall": "node npm/install.js",
+    "test:npm": "node npm/install.js --check",
+    "pack:dry-run": "npm publish --dry-run --access public",
+    "prepack": "npm run test:npm"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}

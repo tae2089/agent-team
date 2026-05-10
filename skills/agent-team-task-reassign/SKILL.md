@@ -2,7 +2,7 @@
 name: agent-team-task-reassign
 description: "agent-team: Reassign a pending or blocked task to another agent."
 metadata:
-  version: 1.1.0
+  version: 1.0.0
   openclaw:
     category: "agent-orchestration"
   requires:
@@ -25,11 +25,11 @@ agent-team task reassign --task TASK_ID --agent NEW_AGENT --reason TEXT
 
 ## Flags
 
-| Flag | JSON key | Required | Default | Description |
-|------|----------|----------|---------|-------------|
-| `--task` | `task_id` | yes | - | Task to move. |
-| `--agent` | `agent` | yes | - | New assignee. |
-| `--reason` | `reason` | yes | - | Handoff rationale stored in the event payload. |
+| Flag       | JSON key  | Required | Default | Description                                    |
+| ---------- | --------- | -------- | ------- | ---------------------------------------------- |
+| `--task`   | `task_id` | yes      | -       | Task to move.                                  |
+| `--agent`  | `agent`   | yes      | -       | New assignee.                                  |
+| `--reason` | `reason`  | yes      | -       | Handoff rationale stored in the event payload. |
 
 ## Examples
 
@@ -45,13 +45,12 @@ agent-team task reassign --params '{"task_id":"task_docs","agent":"backup-writer
 
 ## Errors
 
-| Code | Meaning | Action |
-|------|---------|--------|
+| Code                 | Meaning                             | Action                                       |
+| -------------------- | ----------------------------------- | -------------------------------------------- |
 | `invalid_task_state` | Task is not `pending` or `blocked`. | Retry only eligible tasks or inspect status. |
-| `validation_error` | Required field is missing. | Provide task, new agent, and reason. |
+| `validation_error`   | Required field is missing.          | Provide task, new agent, and reason.         |
 
 ## See Also
 
 - [agent-team-task-list](../agent-team-task-list/SKILL.md)
 - [agent-team-event-log](../agent-team-event-log/SKILL.md)
-

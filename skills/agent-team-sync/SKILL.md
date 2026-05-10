@@ -2,7 +2,7 @@
 name: agent-team-sync
 description: "Service-level skill for agent-team sync checks. Use before workers complete tasks, when an orchestrator suspects drift, or when inbox, dependency, or state-version mismatches must be detected without a daemon. Load agent-team-shared first."
 metadata:
-  version: 1.1.0
+  version: 1.0.0
   openclaw:
     category: "agent-orchestration"
   requires:
@@ -23,8 +23,8 @@ agent-team sync <command> [flags]
 
 ## Helper Commands
 
-| Command | Description |
-|---------|-------------|
+| Command                                      | Description                                                   |
+| -------------------------------------------- | ------------------------------------------------------------- |
 | [`check`](../agent-team-sync-check/SKILL.md) | Check whether an agent can safely proceed or complete a task. |
 
 ## Completion Rule
