@@ -1,0 +1,22 @@
+{
+  "tool": "codex",
+  "prompt": "codex-harness-skill.txt",
+  "run_id": "run_harness_skill_codex",
+  "harness_files_generated": true,
+  "pre_close_close_ready": true,
+  "final_run_status": "closed",
+  "state_version": 10,
+  "task_counts": {
+    "done": 2
+  },
+  "artifacts": {
+    "writer": "_workspace/run_harness_skill_codex/writer.md",
+    "reviewer": "_workspace/run_harness_skill_codex/review.md"
+  },
+  "generated_harness_files": [
+    "AGENTS.md",
+    ".codex/agents/writer.toml",
+    ".codex/agents/reviewer.toml",
+    ".agents/skills/manual-dogfood-orchestrator/SKILL.md"
+  ]
+}

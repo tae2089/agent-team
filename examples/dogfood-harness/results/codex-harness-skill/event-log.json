@@ -1,0 +1,17 @@
+{
+  "tool": "codex",
+  "prompt": "codex-harness-skill.txt",
+  "run_id": "run_harness_skill_codex",
+  "events": [
+    {"state_version": 1, "event_type": "run_created", "entity_type": "run", "entity_id": "run_harness_skill_codex"},
+    {"state_version": 2, "event_type": "task_created", "entity_type": "task", "entity_id": "writer_task"},
+    {"state_version": 3, "event_type": "task_created", "entity_type": "task", "entity_id": "reviewer_task"},
+    {"state_version": 4, "event_type": "message_sent", "entity_type": "message", "entity_id": "msg_a23bc49c86d44255bbecf2df77dfa87e"},
+    {"state_version": 5, "event_type": "message_acked", "entity_type": "message", "entity_id": "msg_a23bc49c86d44255bbecf2df77dfa87e"},
+    {"state_version": 6, "event_type": "task_started", "entity_type": "task", "entity_id": "writer_task"},
+    {"state_version": 7, "event_type": "task_completed", "entity_type": "task", "entity_id": "writer_task"},
+    {"state_version": 8, "event_type": "task_started", "entity_type": "task", "entity_id": "reviewer_task"},
+    {"state_version": 9, "event_type": "task_completed", "entity_type": "task", "entity_id": "reviewer_task"},
+    {"state_version": 10, "event_type": "run_closed", "entity_type": "run", "entity_id": "run_harness_skill_codex"}
+  ]
+}

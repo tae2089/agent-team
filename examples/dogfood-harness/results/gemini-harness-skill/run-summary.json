@@ -1,0 +1,22 @@
+{
+  "tool": "gemini",
+  "prompt": "gemini-harness-skill.txt",
+  "run_id": "run_harness_skill_gemini",
+  "harness_files_generated": true,
+  "pre_close_close_ready": true,
+  "final_run_status": "closed",
+  "state_version": 10,
+  "task_counts": {
+    "done": 2
+  },
+  "artifacts": {
+    "writer": "_workspace/run_harness_skill_gemini/writer.md",
+    "reviewer": "_workspace/run_harness_skill_gemini/review.md"
+  },
+  "generated_harness_files": [
+    "GEMINI.md",
+    ".gemini/agents/writer.md",
+    ".gemini/agents/reviewer.md",
+    ".gemini/skills/manual-dogfood-orchestrator/SKILL.md"
+  ]
+}

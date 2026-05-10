@@ -1,0 +1,26 @@
+You are running a manual dogfood for the agent-team Codex harness.
+
+Use the agent-team CLI that is available on PATH or in the repository. Do not require a daemon. Do not create a git commit.
+
+Goal:
+- Create or use run_id: run_manual_codex
+- Create a writer task and reviewer task tracked by agent-team.
+- Writer artifact: _workspace/run_manual_codex/writer.md
+- Reviewer artifact: _workspace/run_manual_codex/review.md
+- Close the run only after run summary reports close_ready:true.
+
+Required runtime shape:
+- Initialize agent-team state if needed.
+- Create run run_manual_codex if it does not exist.
+- Create a writer task assigned to writer.
+- Create a reviewer task assigned to reviewer that depends on the writer task.
+- Send a compact notice message from orchestrator to writer.
+- Writer must check inbox, ack any message, run sync check, start, write the artifact, then complete the task with evidence and artifact path.
+- Reviewer must run sync check, start, inspect the writer artifact, write the review artifact, then complete the task with evidence and artifact path.
+- Orchestrator must run summary, event log, then close the run.
+
+Final response:
+- Summarize the run id.
+- List writer/reviewer artifact paths.
+- State whether run close succeeded.
+- Mention any blocked step if something prevented completion.

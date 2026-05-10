@@ -1,0 +1,13 @@
+{
+  "tool": "codex",
+  "run_id": "run_manual_codex",
+  "pre_close_close_ready": true,
+  "final_run_status": "closed",
+  "task_counts": {
+    "done": 2
+  },
+  "artifacts": {
+    "writer": "_workspace/run_manual_codex/writer.md",
+    "reviewer": "_workspace/run_manual_codex/review.md"
+  }
+}

@@ -1,0 +1,35 @@
+You are verifying the repository-local `agent-team-gemini-harness` skill.
+
+Read these files before acting:
+- /Users/imtaebin/Documents/codes/agent-team/skills/agent-team-gemini-harness/SKILL.md
+- /Users/imtaebin/Documents/codes/agent-team/skills/agent-team-gemini-harness/references/agent-team-runtime-protocol.md
+
+Use the instructions in those skill files to create a tiny Gemini harness in the current temporary project.
+
+Do not create a git commit. Do not use a daemon. The generated harness must be skill-first: it should tell orchestrators/workers to activate Agent Team runtime recipe/service/helper skills before any runtime command. Use the `agent-team` CLI available on PATH only to verify the skill-mediated runtime contract in this temporary run.
+
+Required generated harness files:
+- GEMINI.md
+- .gemini/agents/writer.md
+- .gemini/agents/reviewer.md
+- .gemini/skills/manual-dogfood-orchestrator/SKILL.md
+
+Required runtime state flow:
+- Treat RUN_ID and TASK_ID as orchestrator-owned internal context, not normal user input.
+- For this deterministic dogfood fixture only, use run_id: run_harness_skill_gemini.
+- The generated harness documentation must say production user-facing runs create or resolve IDs internally and do not ask users to provide raw IDs.
+- Initialize agent-team state if needed.
+- Create the run.
+- Create a writer task assigned to writer.
+- Create a reviewer task assigned to reviewer that depends on the writer task.
+- Send a compact notice message from orchestrator to writer.
+- Writer must inbox list, ack, sync check, start, write `_workspace/run_harness_skill_gemini/writer.md`, and complete with evidence and artifact path.
+- Reviewer must sync check, start, inspect writer artifact, write `_workspace/run_harness_skill_gemini/review.md`, and complete with evidence and artifact path.
+- Run summary must report close_ready:true before run close.
+- Close the run and inspect event log.
+
+Final response:
+- Confirm which harness files were generated.
+- Confirm run id and final run status.
+- List writer/reviewer artifact paths.
+- Say whether the generated harness used agent-team state correctly.
