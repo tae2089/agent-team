@@ -8,6 +8,9 @@ metadata:
   requires:
     bins:
       - agent-team
+    skills:
+      - agent-team-shared
+      - agent-team-inbox
   cliHelp: "agent-team inbox ack --help"
 ---
 

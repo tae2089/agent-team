@@ -8,6 +8,9 @@ metadata:
   requires:
     bins:
       - agent-team
+    skills:
+      - agent-team-shared
+      - agent-team-run
   cliHelp: "agent-team run close --help"
 ---
 

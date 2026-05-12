@@ -8,6 +8,9 @@ metadata:
   requires:
     bins:
       - agent-team
+    skills:
+      - agent-team-shared
+      - agent-team-sync
   cliHelp: "agent-team sync check --help"
 ---
 
