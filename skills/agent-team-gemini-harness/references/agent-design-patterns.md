@@ -9,7 +9,7 @@ Gemini-native harnesses are built from:
 - `.gemini/agents/{name}.md`: reusable role definitions with explicit frontmatter tools
 - `.gemini/skills/{name}/SKILL.md`: reusable process knowledge
 - `GEMINI.md`: project-level pointers and compact operating rules
-- `_workspace/{plan}/`: artifacts, reports, inputs, generated outputs
+- `_workspace/{run_id}/`: artifacts, reports, inputs, generated outputs
 - Agent Team runtime skills backed by daemonless `agent-team` state for orchestrated harness execution
 
 The orchestrator skill is the router and integrator. It may invoke Gemini agents only when its frontmatter includes `invoke_agent`; otherwise it performs direct orchestration and uses the specialist roster as role guidance.

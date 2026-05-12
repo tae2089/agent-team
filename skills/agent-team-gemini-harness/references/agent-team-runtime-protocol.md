@@ -14,7 +14,7 @@ Generated harnesses must tell orchestrators and workers to activate skills befor
 
 - `agent-team-shared` for global runtime rules, JSON conventions, state directory behavior, and errors.
 - Service skills for navigation: `agent-team-run`, `agent-team-task`, `agent-team-inbox`, `agent-team-sync`, and `agent-team-ops`.
-- Recipe skills for workflow shape: `recipe-agent-team-run-lifecycle`, `recipe-agent-team-worker-checkpoint`, and `recipe-agent-team-operational-audit`.
+- Recipe skills for workflow shape: `recipe-agent-team-terminology-context`, `recipe-agent-team-planning-grill`, `recipe-agent-team-architecture-design`, `recipe-agent-team-compound-learning`, `recipe-agent-team-run-lifecycle`, `recipe-agent-team-worker-checkpoint`, and `recipe-agent-team-operational-audit`.
 - Exact command helper skills for command syntax, flags, examples, and errors.
 
 Activate helper skills for exact command behavior:

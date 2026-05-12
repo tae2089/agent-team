@@ -39,10 +39,11 @@ agent-team inbox ack --params '{"msg_id":"msg_contract","agent":"writer"}'
 
 ## Errors
 
-| Code             | Meaning                             | Action                                          |
-| ---------------- | ----------------------------------- | ----------------------------------------------- |
-| `agent_mismatch` | Agent is not the message recipient. | Use the recipient agent or inspect the message. |
-| `not_found`      | Message does not exist.             | Check the message ID.                           |
+| Code               | Meaning                             | Action                                          |
+| ------------------ | ----------------------------------- | ----------------------------------------------- |
+| `agent_mismatch`   | Agent is not the message recipient. | Use the recipient agent or inspect the message. |
+| `not_found`        | Message does not exist.             | Check the message ID.                           |
+| `validation_error` | Required field is missing.          | Provide message ID and agent.                   |
 
 ## See Also
 

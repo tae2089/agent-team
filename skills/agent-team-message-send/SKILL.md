@@ -51,6 +51,7 @@ agent-team message send --params '{"run_id":"run_docs","from":"planner","to":"wr
 - `conflict_detected`
 - `question`
 - `result_note`
+- `approval`
 
 ## Errors
 

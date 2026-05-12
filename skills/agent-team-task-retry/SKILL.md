@@ -1,6 +1,6 @@
 ---
 name: agent-team-task-retry
-description: "agent-team: Reset a blocked or in-progress task to pending."
+description: "agent-team: Reset blocked, in-progress, or failed work to pending."
 metadata:
   version: 1.0.0
   openclaw:

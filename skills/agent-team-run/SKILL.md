@@ -8,6 +8,8 @@ metadata:
   requires:
     bins:
       - agent-team
+    skills:
+      - agent-team-shared
   cliHelp: "agent-team run --help"
 ---
 
@@ -29,7 +31,7 @@ agent-team run <command> [flags]
 | [`status`](../agent-team-run-status/SKILL.md)   | Show one run and task status counts.              |
 | [`summary`](../agent-team-run-summary/SKILL.md) | Show operational run summary and close readiness. |
 | [`list`](../agent-team-run-list/SKILL.md)       | List runs, optionally filtered by status.         |
-| [`close`](../agent-team-run-close/SKILL.md)     | Close a run after all tasks are done.             |
+| [`close`](../agent-team-run-close/SKILL.md)     | Close a run after all tasks are terminal.         |
 | [`cancel`](../agent-team-run-cancel/SKILL.md)   | Cancel an open run.                               |
 
 ## Command Notes
@@ -37,7 +39,7 @@ agent-team run <command> [flags]
 - Create one run per user-requested orchestrated workflow.
 - Reuse an existing `run_id` only when the user provides it or explicitly asks to resume.
 - Use the returned `data.run.id` as `RUN_ID` in task prompts and artifact paths.
-- Close a run only after every task is `done`; otherwise `run close` returns `run_not_ready`.
+- Close a run only after every task is in a terminal state (`done`, `failed`, or `cancelled`); otherwise `run close` returns `run_not_ready`.
 
 ## Discovering Commands
 

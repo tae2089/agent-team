@@ -132,9 +132,9 @@ Agents should branch on `ok` and `error.code`. Use `error.recovery` for operator
 | `not_found`           | Run, task, or message does not exist.                         | Check IDs.                                                              |
 | `agent_mismatch`      | Agent does not own the task/message.                          | Reassign or use the correct agent.                                      |
 | `sync_conflict`       | Unread messages or incomplete dependencies.                   | Run sync check, resolve, retry.                                         |
-| `run_not_ready`       | Run has unfinished tasks.                                     | Finish, retry, or reassign tasks.                                       |
+| `run_not_ready`       | Run has unfinished tasks.                                     | Finish or terminally resolve tasks before closing.                      |
 | `invalid_run_state`   | Run status does not allow operation.                          | Inspect run status.                                                     |
-| `invalid_task_state`  | Task status does not allow operation.                         | Inspect task and choose retry/reassign/block.                           |
+| `invalid_task_state`  | Task status does not allow operation.                         | Inspect task and choose an allowed transition.                          |
 | `internal_error`      | Local filesystem, SQLite, state, install, or sandbox failure. | Check state dir permissions, run init, or inspect install/sandbox docs. |
 
 Full recovery guidance lives in `docs/errors.md`. `agent-team schema export` exposes the same `error_recovery` catalog for agents and CI drift checks.

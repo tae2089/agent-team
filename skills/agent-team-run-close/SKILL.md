@@ -1,6 +1,6 @@
 ---
 name: agent-team-run-close
-description: "agent-team: Close a workflow run after all tasks are done."
+description: "agent-team: Close a workflow run after all tasks are in a terminal state (done, failed, or cancelled)."
 metadata:
   version: 1.0.0
   openclaw:
@@ -15,7 +15,7 @@ metadata:
 
 > **PREREQUISITE:** Read `../agent-team-shared/SKILL.md`.
 
-Finalize a run after all tasks are in terminal status.
+Finalize a run after all tasks are in a terminal state: `done`, `failed`, or `cancelled`.
 
 ## Usage
 

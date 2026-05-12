@@ -1,8 +1,8 @@
 ---
 name: recipe-agent-team-operational-audit
-description: "Recipe: Audit agent-team runs, messages, events, and schema without a daemon."
+description: "Recipe: Read-only daemonless audit of agent-team runs, messages, events, stale tasks, unresolved inboxes, and CLI schema. Use for operational inspection, recovery assessment, runtime debugging, trace review, or contract export. Do not use to create runs, dispatch workers, mutate state, plan, design, align terms, compound learnings, or implement."
 metadata:
-  version: 1.0.0
+  version: 1.1.0
   openclaw:
     category: "recipe"
     domain: "agent-orchestration"
@@ -10,6 +10,7 @@ metadata:
     bins:
       - agent-team
     skills:
+      - agent-team-shared
       - agent-team-ops
 ---
 
@@ -17,12 +18,9 @@ metadata:
 
 Use this recipe to inspect state, unresolved communication, event history, or the command contract.
 
-## Prerequisites
+## Boundary
 
-Load:
-
-- `agent-team-shared`
-- `agent-team-ops`
+Use this recipe for audit and diagnosis only. Required runtime skills are declared in metadata; load `agent-team-shared` first when executing commands. Do not mutate state from this recipe except for a separate user-approved recovery step using the run lifecycle or task command skills.
 
 ## Steps
 
@@ -54,7 +52,7 @@ agent-team message list --run RUN_ID --unread
 5. Inspect event history.
 
 ```bash
-agent-team event log --run RUN_ID --limit 100
+agent-team event log --run RUN_ID
 ```
 
 6. Poll incrementally when needed.
@@ -73,4 +71,4 @@ agent-team schema export
 
 - Use `event log` for auditability, not for replacing task or inbox commands.
 - Use `schema export` as the command contract source of truth.
-- Close runs only after `run status` shows all tasks are `done`.
+- If handing off to run lifecycle for closure, close runs only after all tasks are in a terminal state: `done`, `failed`, or `cancelled`. Tasks still `in_progress`, `blocked`, or `pending` will cause `run_not_ready`.

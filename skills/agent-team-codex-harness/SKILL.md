@@ -1,6 +1,15 @@
 ---
 name: agent-team-codex-harness
 description: "Design, create, evolve, or audit Codex-native harnesses for Agent Team projects. Builds specialized .codex/agents, .agents/skills, an orchestrator skill, AGENTS.md pointers, validation, and an evolution loop. Use for 'set up codex harness', 'create codex automation', 'build specialist agents', harness updates, harness audits, sync, status, and follow-up refinement. Generated harnesses default orchestrated runtime execution to Agent Team runtime skills backed by daemonless `agent-team` state."
+metadata:
+  version: 1.0.0
+  openclaw:
+    category: "agent-orchestration"
+  requires:
+    bins:
+      - agent-team
+    skills:
+      - agent-team-shared
 ---
 
 # Agent Team Codex Harness
@@ -284,7 +293,7 @@ Generated orchestrators must explicitly state the execution mode for each phase:
 
 | Strategy           | Agent Team/Codex Mechanism               | Use When                                           |
 | ------------------ | ------------------------------------- | -------------------------------------------------- |
-| Artifact-based     | `_workspace/{plan}/...` files         | large, structured, auditable outputs               |
+| Artifact-based     | `_workspace/{run_id}/...` files       | large, structured, auditable outputs               |
 | Return summary     | worker final response to orchestrator | compact result aggregation                         |
 | Runtime task state | `agent-team task`                  | durable status, evidence, artifact source of truth |
 | Runtime messages   | `agent-team message`               | compact progress, warnings, discoveries            |
@@ -294,9 +303,9 @@ Recommended combination for durable workflows: runtime task state for official p
 
 File naming convention:
 
-- `_workspace/{plan}/00_input/...`
-- `_workspace/{plan}/{phase}_{agent}_{artifact}.{ext}`
-- `_workspace/{plan}/{task_id}_result.md`
+- `_workspace/{run_id}/00_input/...`
+- `_workspace/{run_id}/{phase}_{agent}_{artifact}.{ext}`
+- `_workspace/{run_id}/{task_id}_result.md`
 - final user-requested output path when applicable
 
 `_workspace/` is not the task board or sync check store. It stores artifacts, reports, logs, generated outputs, and inputs.
@@ -337,12 +346,12 @@ After building or materially changing a harness, update `AGENTS.md` with a conci
 
 **Orchestrator:** `.agents/skills/{orchestrator-skill-name}/SKILL.md`
 **Agents:** `.codex/agents/`
-**Artifacts:** `_workspace/{domain_name}/`
+**Artifacts:** `_workspace/{run_id}/` when runtime execution is active; use a project-local `_workspace/{domain_name}/` root only for harness setup or audit work with no runtime run.
 
 **Runtime State:**
 
 - Load `agent-team-shared` first for global runtime rules.
-- Use recipe skills for workflow shape: `recipe-agent-team-run-lifecycle` for full runs, `recipe-agent-team-worker-checkpoint` for worker checkpoints, and `recipe-agent-team-operational-audit` for audit/status/cleanup.
+- Use recipe skills for workflow shape: `recipe-agent-team-terminology-context` for shared vocabulary artifacts, `recipe-agent-team-planning-grill` for pre-execution plan hardening, `recipe-agent-team-architecture-design` for design artifacts before coding, `recipe-agent-team-compound-learning` for reusable learning capture, `recipe-agent-team-run-lifecycle` for full runs, `recipe-agent-team-worker-checkpoint` for worker checkpoints, and `recipe-agent-team-operational-audit` for audit/status/cleanup.
 - Use service skills for navigation: `agent-team-run`, `agent-team-task`, `agent-team-inbox`, `agent-team-sync`, and `agent-team-ops`.
 - Use exact command helper skills for command syntax and flags, for example `agent-team-task-complete`, `agent-team-sync-check`, `agent-team-message-send`, or `agent-team-event-log`.
 - `RUN_ID` and `TASK_ID` are orchestrator-owned internal context, not required user input.

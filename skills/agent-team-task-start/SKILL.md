@@ -39,10 +39,12 @@ agent-team task start --params '{"task_id":"task_docs","agent":"writer"}'
 
 ## Errors
 
-| Code             | Meaning                         | Action                              |
-| ---------------- | ------------------------------- | ----------------------------------- |
-| `agent_mismatch` | Agent is not the task assignee. | Reassign or use the assigned agent. |
-| `not_found`      | Task does not exist.            | Check the task ID.                  |
+| Code                 | Meaning                                                 | Action                                                    |
+| -------------------- | ------------------------------------------------------- | --------------------------------------------------------- |
+| `agent_mismatch`     | Agent is not the task assignee.                         | Reassign or use the assigned agent.                       |
+| `not_found`          | Task does not exist.                                    | Check the task ID.                                        |
+| `invalid_task_state` | Task is not in a startable state (for example already `in_progress`, `done`, `blocked`, `failed`, or `cancelled`). | If already `in_progress`, skip `task start` and continue work. For `blocked` or `failed`, ask the orchestrator before retrying. For `done` or `cancelled`, do not mutate the task. |
+| `validation_error`   | Required field is missing.                              | Provide task and agent.                              |
 
 ## See Also
 

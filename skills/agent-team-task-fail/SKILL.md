@@ -45,6 +45,7 @@ agent-team task fail --params '{"task_id":"task_docs","agent":"writer","reason":
 | -------------------- | ------------------------------- | ----------------------------------- |
 | `agent_mismatch`     | Agent is not the task assignee. | Reassign or use the assigned agent. |
 | `invalid_task_state` | Task is already terminal.       | Inspect task status.                |
+| `validation_error`   | Required field is missing.      | Provide task, agent, and reason.    |
 
 ## See Also
 

@@ -8,6 +8,8 @@ metadata:
   requires:
     bins:
       - agent-team
+    skills:
+      - agent-team-shared
   cliHelp: "agent-team message --help && agent-team inbox --help"
 ---
 
@@ -39,6 +41,7 @@ agent-team inbox <command> [flags]
 - `conflict_detected`
 - `question`
 - `result_note`
+- `approval`
 
 ## Command Notes
 

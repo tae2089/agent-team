@@ -101,7 +101,7 @@ Example:
 ```markdown
 ## Output Format
 
-Write `_workspace/{plan}/{task_id}_review.md`:
+Write `_workspace/{run_id}/{task_id}_review.md`:
 
 - Verdict: PASS | FIX | BLOCKED
 - Evidence: commands run, files inspected, source links

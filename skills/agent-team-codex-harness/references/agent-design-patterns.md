@@ -9,7 +9,7 @@ Codex-native harnesses are built from:
 - `.codex/agents/{name}.toml`: reusable role definitions
 - `.agents/skills/{name}/SKILL.md`: reusable process knowledge
 - `AGENTS.md`: project-level pointers and compact operating rules
-- `_workspace/{plan}/`: artifacts, reports, inputs, generated outputs
+- `_workspace/{run_id}/`: artifacts, reports, inputs, generated outputs
 - Agent Team runtime skills backed by daemonless `agent-team` state for orchestrated harness execution
 
 Codex does not require or expose a peer-to-peer coordination bus. The orchestrator skill is the router and integrator. It may delegate to Codex agents only when the active Codex environment and user request allow delegation; otherwise it performs direct orchestration and uses the specialist roster as role guidance.

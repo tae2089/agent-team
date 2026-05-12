@@ -16,7 +16,7 @@ Flow:
 
 1. Orchestrator records the research question and artifact root.
 2. If delegation is allowed, run the two researchers independently; otherwise perform the two lanes directly using the same output contracts.
-3. Researchers write artifacts under `_workspace/{plan}/research/`.
+3. Researchers write artifacts under `_workspace/{run_id}/research/`.
 4. Orchestrator verifies evidence and passes artifacts to `synthesis-writer`.
 5. Synthesis writer produces the final report.
 

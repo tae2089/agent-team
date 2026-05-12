@@ -1,6 +1,6 @@
 ---
 name: agent-team-task
-description: "Service-level skill for agent-team task lifecycle commands. Use when creating, listing, showing, starting, completing, blocking, reassigning, or retrying assigned work. Load agent-team-shared first."
+description: "Service-level skill for agent-team task lifecycle commands. Use when creating, listing, showing, starting, completing, blocking, reassigning, retrying, cancelling, failing, or detecting stale assigned work. Load agent-team-shared first."
 metadata:
   version: 1.0.0
   openclaw:
@@ -8,6 +8,8 @@ metadata:
   requires:
     bins:
       - agent-team
+    skills:
+      - agent-team-shared
   cliHelp: "agent-team task --help"
 ---
 
@@ -32,7 +34,7 @@ agent-team task <command> [flags]
 | [`complete`](../agent-team-task-complete/SKILL.md) | Complete a task with evidence and artifact path.        |
 | [`block`](../agent-team-task-block/SKILL.md)       | Mark a task blocked with an actionable reason.          |
 | [`reassign`](../agent-team-task-reassign/SKILL.md) | Move a pending or blocked task to another agent.        |
-| [`retry`](../agent-team-task-retry/SKILL.md)       | Reset a blocked or in-progress task to pending.         |
+| [`retry`](../agent-team-task-retry/SKILL.md)       | Reset blocked, in-progress, or failed work to pending.  |
 | [`cancel`](../agent-team-task-cancel/SKILL.md)     | Cancel a non-terminal task.                             |
 | [`fail`](../agent-team-task-fail/SKILL.md)         | Mark assigned work failed with a reason.                |
 | [`stale`](../agent-team-task-stale/SKILL.md)       | Detect old blocked or in-progress tasks.                |
@@ -42,6 +44,7 @@ agent-team task <command> [flags]
 - Workers should run `agent-team sync check` before completing work.
 - `start`, `complete`, and `block` require `--agent` to match the task assignee.
 - `complete` requires both `--evidence` and `--artifact`.
+- `failed` is terminal for run closure, but `task retry` can reset it to `pending` before the run is closed when the orchestrator chooses another attempt.
 - Use `--force` only with explicit orchestrator approval after a reported sync conflict.
 
 ## Discovering Commands

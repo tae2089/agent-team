@@ -8,7 +8,9 @@ metadata:
   requires:
     bins:
       - agent-team
-  cliHelp: "agent-team schema export"
+    skills:
+      - agent-team-shared
+  cliHelp: "agent-team event --help && agent-team schema export"
 ---
 
 # Agent Team Operational Commands
@@ -23,7 +25,7 @@ Operational commands inspect or finalize state without running agents.
 | ------------------------------------------------------- | -------------------------------------------------------------------- |
 | [`run list`](../agent-team-run-list/SKILL.md)           | Find open or closed runs.                                            |
 | [`run summary`](../agent-team-run-summary/SKILL.md)     | Inspect run readiness, blockers, unread messages, and recent events. |
-| [`run close`](../agent-team-run-close/SKILL.md)         | Finalize a run after all tasks are done.                             |
+| [`run close`](../agent-team-run-close/SKILL.md)         | Finalize a run after all tasks are terminal.                         |
 | [`message list`](../agent-team-message-list/SKILL.md)   | Inspect run-scoped message history.                                  |
 | [`event log`](../agent-team-event-log/SKILL.md)         | Inspect append-only state events.                                    |
 | [`task stale`](../agent-team-task-stale/SKILL.md)       | Find old in-progress or blocked tasks.                               |

@@ -38,7 +38,7 @@ description: "{Domain} Codex harness orchestrator. Routes {domain} build, update
 
 - Runtime coordination is skill-first: load runtime recipe/service/helper skills, then use daemonless `agent-team` commands only through those helper contracts.
 - Load `agent-team-shared` first for global runtime behavior.
-- Use recipes for workflow shape: `recipe-agent-team-run-lifecycle` for full runs, `recipe-agent-team-worker-checkpoint` for worker checkpoints, and `recipe-agent-team-operational-audit` for audit/status/cleanup.
+- Use recipes for workflow shape: `recipe-agent-team-terminology-context` for shared vocabulary artifacts, `recipe-agent-team-planning-grill` for pre-execution plan hardening, `recipe-agent-team-architecture-design` for design artifacts before coding, `recipe-agent-team-compound-learning` for reusable learning capture, `recipe-agent-team-run-lifecycle` for full runs, `recipe-agent-team-worker-checkpoint` for worker checkpoints, and `recipe-agent-team-operational-audit` for audit/status/cleanup.
 - For exact command behavior, load the relevant helper skill, such as `agent-team-run-create`, `agent-team-task-create`, `agent-team-task-complete`, `agent-team-sync-check`, `agent-team-message-send`, or `agent-team-event-log`.
 - Use service skills only for navigation: `agent-team-run`, `agent-team-task`, `agent-team-inbox`, `agent-team-sync`, and `agent-team-ops`.
 - Setup, edit, and audit requests do not probe runtime state.
@@ -55,12 +55,16 @@ description: "{Domain} Codex harness orchestrator. Routes {domain} build, update
 1. Classify the request.
 2. Select pattern and execution mode.
 3. Load only relevant references.
-4. Load `recipe-agent-team-run-lifecycle`, then resolve or create the orchestrator-owned runtime context for orchestrated harness execution.
-5. Create active runtime tasks when needed using exact command helper skills, omit explicit task IDs by default, and capture returned task IDs.
-6. Execute direct work or delegate bounded specialist tasks when allowed.
-7. Collect returned summaries, task records, inbox messages, evidence, and artifacts.
-8. Retry, block, request clarification, or complete.
-9. Report final artifacts and unresolved risks.
+4. Load `recipe-agent-team-terminology-context` when user language, code terms, or agent task vocabulary need alignment.
+5. Load `recipe-agent-team-planning-grill` when the plan, terminology, task boundaries, or acceptance criteria need hardening.
+6. Load `recipe-agent-team-architecture-design` when the workflow needs design artifacts before coding.
+7. Load `recipe-agent-team-run-lifecycle`, then resolve or create the orchestrator-owned runtime context for orchestrated harness execution.
+8. Create active runtime tasks when needed using exact command helper skills, omit explicit task IDs by default, and capture returned task IDs.
+9. Execute direct work or delegate bounded specialist tasks when allowed.
+10. Collect returned summaries, task records, inbox messages, evidence, and artifacts.
+11. Load `recipe-agent-team-compound-learning` when the workflow produced reusable learning for future runs.
+12. Retry, block, request clarification, or complete.
+13. Report final artifacts and unresolved risks.
 ```
 
 ## Data Flow
