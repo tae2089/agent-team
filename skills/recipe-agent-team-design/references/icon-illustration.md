@@ -1,11 +1,11 @@
 # Product / Icon-Illustration Reference
 
-Use when discovery selects domain `product/icon-illustration`. Produces icon set or illustration system specifications: grid, style rules, taxonomy, naming, accessibility, and asset manifest. Text-based — no rendered icons.
+Use when discovery selects subdomain `icon-illustration`. Produces icon set or illustration system specifications: grid, style rules, taxonomy, naming, accessibility, and asset manifest. Text-based — no rendered icons.
 
 ## Output Layout
 
 ```
-_workspace/{run_id}/design/product/icon-illustration/
+_workspace/{run_id}/design/icon-illustration/
 ├── style.md         # visual rules, geometry, stroke, corner radius
 ├── taxonomy.md      # category tree + canonical names + synonyms
 ├── usage.md         # sizing, color application, pairing with text, a11y
@@ -154,7 +154,7 @@ _workspace/{run_id}/design/product/icon-illustration/
 ## Deliverables
 - Format: SVG (single-file, optimized).
 - Naming: `{category}_{name}.svg` (e.g., `navigation_arrow-right.svg`).
-- Source files (if any) under `_workspace/{run_id}/design/product/icon-illustration/source/`.
+- Source files (if any) under `_workspace/{run_id}/design/icon-illustration/source/`.
 - Optimization: stroke not expanded, viewBox preserved, no inline styles.
 ```
 
@@ -187,5 +187,5 @@ An icon/illustration system passes when:
 | Situation | Hand off to |
 |---|---|
 | Spec ready, asset production starts | Create design/build tasks citing icon names; worker uses `recipe-agent-team-worker-checkpoint` |
-| Icon set will live inside product UI | Continue with `references/product/ui.md` for screen integration |
+| Icon set will live inside product UI | Start a UI subdomain pass using `references/ui.md` for screen integration |
 | Naming overlaps with existing component glossary | Run `recipe-agent-team-terminology-context` first |

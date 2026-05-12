@@ -1,11 +1,11 @@
 # Marketing / Logo-Branding Reference
 
-Use when discovery selects domain `marketing/logo-branding`. Produces brand identity specifications: concept, wordmark, symbol, usage rules, and color/typography palette. Text-based — no rendered logo files.
+Use when discovery selects subdomain `logo-branding`. Produces brand identity specifications: concept, wordmark, symbol, usage rules, and color/typography palette. Text-based — no rendered logo files.
 
 ## Output Layout
 
 ```
-_workspace/{run_id}/design/marketing/logo-branding/
+_workspace/{run_id}/design/logo-branding/
 ├── concept.md      # brand essence, positioning, audience
 ├── wordmark.md     # text-only logotype specification
 ├── symbol.md       # icon/symbol/monogram specification
@@ -196,4 +196,4 @@ A logo/branding artifact set passes when:
 |---|---|
 | Spec ready, art production starts | Create design/build tasks citing brand tokens; worker uses `recipe-agent-team-worker-checkpoint` |
 | Brand voice conflicts with product copy | Run `recipe-agent-team-terminology-context` |
-| Logo will appear inside product UI | Continue with `references/product/ui.md` for screen integration |
+| Logo will appear inside product UI | Start a UI subdomain pass using `references/ui.md` for screen integration |

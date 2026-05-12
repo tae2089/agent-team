@@ -1,11 +1,11 @@
 # Product / UI Reference
 
-Use when discovery selects domain `product/ui`. Produces interface specifications for screens, flows, components, and design tokens. Framework-agnostic — no JSX/Vue/Svelte syntax.
+Use when discovery selects subdomain `ui`. Produces interface specifications for screens, flows, components, and design tokens. Framework-agnostic — no JSX/Vue/Svelte syntax or framework-specific prop types.
 
 ## Output Layout
 
 ```
-_workspace/{run_id}/design/product/ui/
+_workspace/{run_id}/design/ui/
 ├── flows.md         # information architecture + user flows
 ├── wireframes.md    # screen layouts (ASCII/markdown)
 ├── components.md    # reusable component specs
@@ -112,7 +112,7 @@ Used in: Dashboard (KPI tiles), Reports list.
 | title | string | yes | — | Card heading |
 | value | string \| number | yes | — | Primary metric |
 | trend | "up" \| "down" \| "flat" | no | "flat" | Arrow indicator |
-| onClick | () => void | no | — | Click handler |
+| action | command reference | no | — | Triggered action or navigation target |
 
 States: default, hover, loading, error.
 Variants: compact, expanded.
@@ -126,7 +126,7 @@ Used in: Dashboard (recent activity), Reports.
 |---|---|---|---|
 | rows | Row[] | yes | — |
 | columns | Column[] | yes | — |
-| emptyState | ReactNode | no | <Empty/> |
+| emptyState | content slot | no | standard empty state |
 
 States: idle, loading, error, empty.
 Sort/filter/pagination requirements documented per usage.

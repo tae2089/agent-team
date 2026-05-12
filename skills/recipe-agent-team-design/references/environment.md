@@ -1,11 +1,11 @@
 # Game Environment / Level Design Reference
 
-Use when discovery selects domain `game/environment`. Produces level and environment design specs: concept, layout, biomes, set dressing, lighting/mood, and asset manifest. Text-based — no rendered images.
+Use when discovery selects subdomain `environment`. Produces level and environment design specs: concept, layout, biomes, set dressing, lighting/mood, and asset manifest. Text-based — no rendered images.
 
 ## Output Layout
 
 ```
-_workspace/{run_id}/design/game/environment/{level_id}/
+_workspace/{run_id}/design/environment/{level_id}/
 ├── concept.md       # narrative role, mood, pacing intent
 ├── layout.md        # macro map, regions, navigation, encounter beats
 ├── biome.md         # terrain, vegetation, weather, biome rules
@@ -244,7 +244,7 @@ Each sub-artifact references the previous one (layout cites concept beats; biome
 
 ## Delivery
 - File naming: `{level_id}_{category}_{name}.{ext}` (e.g., `lv-forest-01_terrain_main.fbx`).
-- Source under `_workspace/{run_id}/design/game/environment/{level_id}/source/` (if any).
+- Source under `_workspace/{run_id}/design/environment/{level_id}/source/` (if any).
 - Binary assets do not commit to repo; link externally.
 ```
 
@@ -281,6 +281,6 @@ An environment design set passes when:
 | Situation | Hand off to |
 |---|---|
 | Spec ready, environment art/build starts | Create build tasks citing `level_id`; worker uses `recipe-agent-team-worker-checkpoint` |
-| Characters needed in this environment | Run `references/game/character.md` for each new character |
+| Characters needed in this environment | Start separate character subdomain passes using `references/character.md` |
 | Encounter mechanics undefined | Pause and run `recipe-agent-team-planning-grill` for combat rules |
 | Naming conflicts with other levels | Run `recipe-agent-team-terminology-context` first |

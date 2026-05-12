@@ -1,11 +1,11 @@
 # Game / Character Reference
 
-Use when discovery selects domain `game/character`. Produces character design specifications: concept, visual identity, mechanics, animation requirements, and asset manifest. Text-based — no rendered images.
+Use when discovery selects subdomain `character`. Produces character design specifications: concept, visual identity, mechanics, animation requirements, and asset manifest. Text-based — no rendered images.
 
 ## Output Layout
 
 ```
-_workspace/{run_id}/design/game/character/{character_id}/
+_workspace/{run_id}/design/character/{character_id}/
 ├── concept.md       # lore, personality, role, archetype
 ├── visual.md        # silhouette, color palette, costume, props, references
 ├── mechanics.md     # stats, skills, abilities, balance notes
@@ -201,7 +201,7 @@ Each sub-artifact references the previous one (visual cites concept role; mechan
 
 ## Delivery
 - File naming: `{character_id}_{asset}_{lod}.{ext}` (e.g., `c-knight-01_body_lod0.fbx`).
-- Source under `_workspace/{run_id}/design/game/character/{character_id}/source/` (if any).
+- Source under `_workspace/{run_id}/design/character/{character_id}/source/` (if any).
 - External binary assets do not commit to repo; link externally.
 ```
 
