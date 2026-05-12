@@ -1,6 +1,6 @@
 ---
 name: recipe-agent-team-compound-learning
-description: "Recipe: Capture reusable learnings from completed agent-team runs, tasks, reviews, or fixes so future agents skip re-discovery. Use for 'compound learning', 'document what worked', 'capture a reusable pattern', 'summarize lessons', 'update solution docs', 'close the loop'. Do not use for in-progress runs, uncertain outcomes, trivial fixes, implementation, planning, architecture design, or code review."
+description: "Recipe: Capture reusable learnings from completed agent-team runs, tasks, reviews, or fixes so future agents skip re-discovery. Use for 'compound learning', 'document what worked', 'capture a reusable pattern', 'summarize lessons', 'update solution docs', 'close the loop'. Do not use for in-progress runs, uncertain outcomes, trivial fixes, active implementation, active planning/design, or performing code review itself."
 metadata:
   version: 1.0.0
   openclaw:
@@ -24,7 +24,7 @@ The goal is not to archive everything. The goal is to turn fresh context into a 
 
 ## Boundary
 
-Use this recipe after coding, review, compound/integration, debugging, or a successful planning/design iteration that produced a reusable convention or decision.
+Use this recipe after coding, review, compound/integration, debugging, or a successful planning/design iteration that produced a reusable convention or decision. Do not use it to perform those activities; use it only to capture what was learned after evidence exists.
 
 ## Artifact Contract
 
@@ -213,6 +213,17 @@ When a later task should consume the learning, include compact metadata such as:
 - `refresh_scope`
 
 Do not duplicate the full learning in task metadata. Put full prose in artifacts.
+
+## Hand Off
+
+| Situation | Hand off to |
+|---|---|
+| Learning reshapes vocabulary or aliases | `recipe-agent-team-terminology-context` |
+| Learning changes plan, scope, or acceptance | `recipe-agent-team-planning-grill` |
+| Learning changes module shape or interface contract | `recipe-agent-team-architecture-design` |
+| Learning needs a single design brief instead of full design phases | `recipe-agent-team-design` |
+| Learning needs verification on existing code | review or coding workflow |
+| Learning is read-only state inspection follow-up | `recipe-agent-team-operational-audit` |
 
 ## Completion
 
