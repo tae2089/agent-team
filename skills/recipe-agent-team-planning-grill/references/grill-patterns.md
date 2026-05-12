@@ -17,17 +17,16 @@ Check the plan across these dimensions:
 
 ## Question Pattern
 
-Ask one question at a time using this shape:
+Ask one question at a time using the 4-line Probe Format from the parent SKILL.md:
 
-```text
-Decision: ...
-Why it matters: ...
-Recommendation: ...
-Risk if wrong: ...
-Question: ...
+```md
+현재 이해: <one-sentence summary of the plan and what is already decided>
+막힌 결정: <unresolved decision + why it matters, one line>
+추천 답안: <recommended answer (if wrong: <consequence>)>
+질문: <one concrete question, no compound clauses>
 ```
 
-Keep the question narrow enough that the user can answer with one decision. If the answer requires multiple decisions, split the question.
+`추천 답안` is required and must inline the consequence of being wrong. Keep the question narrow enough that the user can answer with one decision. If the answer requires multiple decisions, split into separate probes — one per turn.
 
 Block only when the answer changes scope, owner, task ordering, artifact contract, acceptance criteria, or safety boundary. Otherwise record the uncertainty as an open question or risk and continue with the recommended assumption.
 
@@ -36,7 +35,8 @@ Block only when the answer changes scope, owner, task ordering, artifact contrac
 Route out of planning grill when a question becomes a different kind of work:
 
 - Use `recipe-agent-team-terminology-context` when the blocker is naming, aliases, overloaded terms, or user/code vocabulary mismatch.
-- Use `recipe-agent-team-architecture-design` when the blocker is module shape, interface placement, migration sequence, or implementation task structure.
+- Use `recipe-agent-team-architecture-design` when the blocker is backend module shape, interface placement, migration sequence, or implementation task structure.
+- Use `recipe-agent-team-design` when the blocker is a UI/icon/character/environment/logo design brief instead of backend structure.
 - Use coding workflow only after task contracts and acceptance criteria are concrete enough for evidence-backed completion.
 - Use review workflow when the plan is stable and the concern is correctness, regression risk, or missing verification.
 - Use `recipe-agent-team-compound-learning` after execution when the workflow produced reusable guidance.

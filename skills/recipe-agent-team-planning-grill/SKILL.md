@@ -73,26 +73,35 @@ Before asking the user, search for:
 
 When code or docs contradict the user's plan, surface the contradiction directly and ask which source should change.
 
-Example:
+Example (Probe Format):
 
-```text
-The current task model stores execution status and evidence, while your plan puts large planning content in task metadata. I recommend keeping task metadata small and writing the plan to _workspace/{run_id}/plan.md. Should we keep that boundary?
+```md
+현재 이해: plan puts large planning content into task metadata
+막힌 결정: task metadata size boundary — bloated metadata hurts downstream agents
+추천 답안: keep task metadata compact; write plan body to _workspace/{run_id}/planning-grill.md and task contracts to _workspace/{run_id}/plan.json (if wrong: workers parse oversized metadata + state churn)
+질문: 이 경계 유지할까?
 ```
 
 ## Question Discipline
 
 Ask at most one blocking question at a time unless the user explicitly asks for a full checklist.
 
-Each question should include:
+Deliver every blocking question as a single 4-line Probe Format block:
 
-- the unresolved decision
-- why it matters
-- the recommended answer
-- the consequence if the recommendation is wrong
+```md
+현재 이해: <one-sentence summary of the plan and what is already decided>
+막힌 결정: <unresolved decision + why it matters, one line>
+추천 답안: <recommended answer (if wrong: <consequence>)>
+질문: <one concrete question, no compound clauses>
+```
 
-Do not ask the user to answer what can be discovered from local files, command output, or existing artifacts.
+Rules:
 
-Do not block the workflow on every uncertainty. Block only when the answer would change scope, owner, task ordering, artifact contract, acceptance criteria, or safety boundary. Otherwise record the uncertainty under `Open Questions` or `Risks` and proceed with the recommended assumption.
+- One question per turn. Compound questions are forbidden.
+- `추천 답안` is required and must inline the consequence of being wrong so the requester sees the cost without a follow-up.
+- After each answer, restate `현재 이해` in a one-line acknowledgment before the next probe.
+- Do not ask the user to answer what can be discovered from local files, command output, or existing artifacts.
+- Block only when the answer would change scope, owner, task ordering, artifact contract, acceptance criteria, or safety boundary. Otherwise record the uncertainty under `Open Questions` or `Risks` and proceed with the recommended assumption.
 
 ## Planning Artifact Format
 
