@@ -72,3 +72,12 @@ agent-team schema export
 - Use `event log` for auditability, not for replacing task or inbox commands.
 - Use `schema export` as the command contract source of truth.
 - If handing off to run lifecycle for closure, close runs only after all tasks are in a terminal state: `done`, `failed`, or `cancelled`. Tasks still `in_progress`, `blocked`, or `pending` will cause `run_not_ready`.
+
+## Completion
+
+This recipe is complete when:
+
+- active runs, stale tasks, unresolved messages, and event history relevant to the question have been inspected
+- findings cite concrete `run_id`, `task_id`, or `msg_id` values, not summaries alone
+- no state mutation occurred from this recipe
+- recovery handoff (if any) names the lifecycle or task recipe that will mutate state, with explicit user approval recorded
