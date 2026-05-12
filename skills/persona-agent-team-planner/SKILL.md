@@ -16,13 +16,14 @@ metadata:
       - recipe-agent-team-terminology-context
       - recipe-agent-team-planning-grill
       - recipe-agent-team-architecture-design
+      - recipe-agent-team-design
 ---
 
 # Agent Team Planner Persona
 
 > **PREREQUISITE:** Load `agent-team-shared`, `agent-team-run`, `agent-team-task`. The recipe skills below load on demand based on routing.
 
-Pre-execution planner for agent-team workflows. Owns the choice between terminology alignment, plan grilling, and architecture design so callers never have to disambiguate three overlapping recipes.
+Pre-execution planner for agent-team workflows. Owns the choice between terminology alignment, plan grilling, architecture design, and design-brief work so callers never have to disambiguate overlapping recipes.
 
 ## Routing Decision Tree
 
@@ -35,14 +36,18 @@ Run these checks in order. First match wins.
 2. **Plan is rough, acceptance criteria missing, risks unmapped, or fuzzy idea needs to become durable tasks?**
    → Load `recipe-agent-team-planning-grill`.
    Input: terminology artifact if step 1 produced one.
-   Output artifact: `_workspace/{run_id}/plan.md` (acceptance criteria, risks, hardened scope).
+   Output artifacts: `_workspace/{run_id}/planning-grill.md` (decisions, risks, hardened scope), `_workspace/{run_id}/plan.json` (machine-readable task contracts when downstream consumes it), `_workspace/{run_id}/acceptance.md` (when criteria are substantial).
 
 3. **Plan is concrete with acceptance criteria, but module/interface/contract structure is undecided?**
    → Load `recipe-agent-team-architecture-design`.
-   Input: plan artifact from step 2 if present.
-   Output artifact: `_workspace/{run_id}/design.md` + `_workspace/{run_id}/task-contracts/`.
+   Input: planning artifact from step 2 if present.
+   Output artifacts: `_workspace/{run_id}/architecture-candidates.md` (when comparing options), `_workspace/{run_id}/technical-design.md` (selected design), `_workspace/{run_id}/implementation-tasks.json` (machine-readable task contracts when downstream consumes it).
 
-4. **None match** → return to caller. Wrong persona; suggest `persona-agent-team-orchestrator` (if execution-time) or direct coding.
+4. **Need a single design brief (one-pager) instead of full planning + architecture phases?**
+   → Load `recipe-agent-team-design`.
+   Output artifact: `_workspace/{run_id}/design/design-brief.md` plus subdomain-specific outputs.
+
+5. **None match** → return to caller. Wrong persona; suggest `recipe-agent-team-run-lifecycle` for orchestrated execution or direct coding for a local implementation task.
 
 ## Pipeline Default Order
 
@@ -54,9 +59,10 @@ Skip earlier steps only when their output artifact already exists or input is un
 
 Before activating any sub-recipe:
 
-- Confirm `RUN_ID` is set or create one through `recipe-agent-team-run-lifecycle` orchestrator (not this persona).
+- If the user wants durable tracking, execution, follow-up, or worker artifacts, confirm `RUN_ID` is set or ask the orchestrator to create one through `recipe-agent-team-run-lifecycle`.
+- If there is no active run and the user only wants planning/design guidance, do not invent a run. Let the selected recipe use its no-run final-response fallback.
 - This persona does not create runs, dispatch workers, or close runs.
-- All produced artifacts live under `_workspace/{run_id}/` and are recorded as task `artifact` paths through normal `agent-team task complete` from a worker.
+- When a run exists, produced artifacts live under `_workspace/{run_id}/` and are recorded as task `artifact` paths through normal `agent-team task complete` from a worker.
 
 ## When To Hand Off
 
