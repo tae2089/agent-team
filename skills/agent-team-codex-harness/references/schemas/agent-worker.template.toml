@@ -6,7 +6,7 @@
 #   {{DESCRIPTION}}      1-2 sentence routing description with follow-up triggers
 #   {{ROLE_SUMMARY}}     one-line role summary
 #   {{DOMAIN}}           responsible domain or area of expertise
-#   {{OUTPUT_PATH}}      result artifact path, usually `_workspace/{plan}/{step}/{agent}-result.md`
+#   {{OUTPUT_PATH}}      result artifact path, usually `_workspace/{run_id}/{task_id}_result.md`
 #   {{OUTPUT_FORMAT}}    Markdown, JSON, code patch, report, etc.
 #   {{MODEL}}            role tier from models.md, commonly `gpt-5.5`
 #   {{SANDBOX_MODE}}     read-only | workspace-write | danger-full-access; default to workspace-write for artifact writers
