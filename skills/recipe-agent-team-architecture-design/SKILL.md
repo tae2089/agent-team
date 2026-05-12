@@ -137,7 +137,16 @@ Write `technical-design.md` only after one condition is true:
 - the planning artifact already selected a direction
 - one candidate is clearly recommended and the tradeoff is low-risk enough to proceed without another question
 
-If candidates have meaningful tradeoffs, ask the user to choose before writing the selected design.
+If candidates have meaningful tradeoffs, ask the user to choose before writing the selected design. Deliver the selection question as a single Probe Format block:
+
+```md
+현재 이해: <one-sentence framing of the architecture decision>
+막힌 결정: <which candidate; the tradeoff axis that splits them>
+추천 답안: <Candidate X (if wrong: <consequence — migration cost, lost leverage, etc.>)>
+질문: <one concrete question, no compound clauses>
+```
+
+`추천 답안` is required — never present candidates without naming a default. The requester reacts to a recommendation, not authors from scratch.
 
 Record the selection in the design artifact:
 
