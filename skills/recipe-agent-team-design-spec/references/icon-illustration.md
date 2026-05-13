@@ -1,11 +1,11 @@
 # Product / Icon-Illustration Reference
 
-Use when discovery selects subdomain `icon-illustration`. Produces icon set or illustration system specifications: grid, style rules, taxonomy, naming, accessibility, and asset manifest. Text-based — no rendered icons.
+Pattern for designs whose `Output` describes an icon set or illustration system: grid, style rules, taxonomy, naming, accessibility, and asset manifest. Cite this file as a `Pattern Hint` in the brief when applicable. Text-based — no rendered icons.
 
 ## Output Layout
 
 ```
-_workspace/{run_id}/design/icon-illustration/
+_workspace/{run_id}/design/{slug}/   # e.g., {slug}=icon-set or hero-illustrations
 ├── style.md         # visual rules, geometry, stroke, corner radius
 ├── taxonomy.md      # category tree + canonical names + synonyms
 ├── usage.md         # sizing, color application, pairing with text, a11y
@@ -154,7 +154,7 @@ _workspace/{run_id}/design/icon-illustration/
 ## Deliverables
 - Format: SVG (single-file, optimized).
 - Naming: `{category}_{name}.svg` (e.g., `navigation_arrow-right.svg`).
-- Source files (if any) under `_workspace/{run_id}/design/icon-illustration/source/`.
+- Source files (if any) under `{Output Path}/source/`.
 - Optimization: stroke not expanded, viewBox preserved, no inline styles.
 ```
 
@@ -181,13 +181,13 @@ An icon/illustration system passes when:
 - Use synonyms map to keep search/index aligned without renaming.
 - For large sets, batch by category in `manifest.md` to track progress.
 - Promote icon palette tokens up to product `palette.md` if shared.
-- When an upstream `design-system` run produced `_workspace/{run_id}/design/design-system/DESIGN.md`, reference token names (`{colors.foo}`) inside `usage.md` instead of inlining hex; add icon-only tokens (e.g., stroke weight per scale tier) as deltas.
+- When an upstream Output produced a token-catalog `DESIGN.md` (Pattern Hint of `design-system.md`), reference token names (`{colors.foo}`) inside `usage.md` instead of inlining hex; add icon-only tokens (e.g., stroke weight per scale tier) as deltas.
 
 ## Hand Off
 
 | Situation | Hand off to |
 |---|---|
 | Spec ready, asset production starts | Create design/build tasks citing icon names; worker uses `recipe-agent-team-worker-checkpoint` |
-| Icon set will live inside product UI | Start a UI subdomain pass using `references/ui.md` for screen integration |
+| Icon set will live inside product UI | Run a separate Output pass citing `ui.md` as a Pattern Hint for screen integration |
 | Naming overlaps with existing component glossary | Run `recipe-agent-team-terminology-context` first |
-| Icon set will share color/sizing with other surfaces and no shared token catalog exists | Pause; run `recipe-agent-team-design-interview` with `subdomain: design-system`, then resume `icon-illustration` via `recipe-agent-team-design-spec` citing the new `DESIGN.md` |
+| Icon set will share color/sizing with other surfaces and no shared token catalog exists | Pause; run `recipe-agent-team-design-interview` for an Output of `reusable token catalog` (Pattern Hint `design-system.md`), then resume this Output citing the new `DESIGN.md` as Upstream Input |

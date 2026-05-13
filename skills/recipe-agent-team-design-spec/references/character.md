@@ -1,11 +1,11 @@
 # Game / Character Reference
 
-Use when discovery selects subdomain `character`. Produces character design specifications: concept, visual identity, mechanics, animation requirements, and asset manifest. Text-based — no rendered images.
+Pattern for designs whose `Output` describes a playable or NPC character: concept, visual identity, mechanics, animation requirements, and asset manifest. Cite this file as a `Pattern Hint` in the brief when applicable. Text-based — no rendered images.
 
 ## Output Layout
 
 ```
-_workspace/{run_id}/design/character/{character_id}/
+_workspace/{run_id}/design/{slug}/   # e.g., {slug}=hero-npc or boss-final
 ├── concept.md       # lore, personality, role, archetype
 ├── visual.md        # silhouette, color palette, costume, props, references
 ├── mechanics.md     # stats, skills, abilities, balance notes
@@ -13,7 +13,7 @@ _workspace/{run_id}/design/character/{character_id}/
 └── assets.md        # asset manifest, formats, naming, delivery requirements
 ```
 
-One subdirectory per character. Use stable `character_id` (e.g., `c-knight-01`).
+One brief per character. Pick a stable `{slug}` during Output Capture (e.g., `c-knight-01`, `hero-npc`).
 
 ## Pipeline Order
 
@@ -201,7 +201,7 @@ Each sub-artifact references the previous one (visual cites concept role; mechan
 
 ## Delivery
 - File naming: `{character_id}_{asset}_{lod}.{ext}` (e.g., `c-knight-01_body_lod0.fbx`).
-- Source under `_workspace/{run_id}/design/character/{character_id}/source/` (if any).
+- Source under `{Output Path}/source/` (if any).
 - External binary assets do not commit to repo; link externally.
 ```
 

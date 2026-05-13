@@ -1,11 +1,11 @@
 # Product / UI Reference
 
-Use when discovery selects subdomain `ui`. Produces interface specifications for screens, flows, components, and design tokens. Framework-agnostic — no JSX/Vue/Svelte syntax or framework-specific prop types.
+Pattern for designs whose `Output` describes a product interface: screens, flows, components, and design tokens. Cite this file as a `Pattern Hint` in the brief when applicable. Framework-agnostic — no JSX/Vue/Svelte syntax or framework-specific prop types.
 
 ## Output Layout
 
 ```
-_workspace/{run_id}/design/ui/
+_workspace/{run_id}/design/{slug}/   # e.g., {slug}=dashboard or onboarding-ui
 ├── flows.md         # information architecture + user flows
 ├── wireframes.md    # screen layouts (ASCII/markdown)
 ├── components.md    # reusable component specs
@@ -19,7 +19,7 @@ Run sub-steps in order. Skip a step only when its artifact already exists and in
 1. **flows.md** — information architecture, navigation graph, primary user journeys, state transitions, error/empty states. Defines *what screens exist and how users move between them*.
 2. **wireframes.md** — per-screen layout, region partitions, content hierarchy, responsive breakpoints. Defines *what each screen contains*.
 3. **components.md** — reusable components extracted from wireframes, props, variants, states, accessibility notes. Defines *what building blocks exist*.
-4. **tokens.md** — color palette, spacing scale, typography ramp, theme variants (light/dark), motion. Defines *visual language constants*. If an upstream `design-system` subdomain run produced `_workspace/{run_id}/design/design-system/DESIGN.md`, cite it as Upstream Input and reference tokens via `{group.name}` instead of redefining them — keep `tokens.md` as a thin pointer plus any surface-specific additions.
+4. **tokens.md** — color palette, spacing scale, typography ramp, theme variants (light/dark), motion. Defines *visual language constants*. If an upstream Output produced a token-catalog `DESIGN.md` (cited as a Pattern Hint of `design-system.md`), cite the catalog as Upstream Input and reference tokens via `{group.name}` instead of redefining them — keep `tokens.md` as a thin pointer plus any surface-specific additions.
 
 Later sub-artifacts reference earlier ones (wireframes cite flow IDs, components cite wireframe regions, tokens are referenced by components).
 
@@ -217,4 +217,4 @@ A UI design artifact set passes when:
 | UI spec ready, implementation needed | Create coding tasks citing flow/component/token IDs; worker uses `recipe-agent-team-worker-checkpoint` |
 | UI spec depends on missing backend contract | Pause and run `recipe-agent-team-architecture-design` |
 | Terms inside spec ambiguous | Stop and run `recipe-agent-team-terminology-context` first |
-| No shared token catalog exists and other surfaces (logo/icons) will reuse the same tokens | Pause; run `recipe-agent-team-design-interview` with `subdomain: design-system`, then resume `ui` via `recipe-agent-team-design-spec` citing the new `DESIGN.md` |
+| No shared token catalog exists and other surfaces (logo/icons) will reuse the same tokens | Pause; run `recipe-agent-team-design-interview` for an Output of `reusable token catalog` (Pattern Hint `design-system.md`), then resume this Output citing the new `DESIGN.md` as Upstream Input |

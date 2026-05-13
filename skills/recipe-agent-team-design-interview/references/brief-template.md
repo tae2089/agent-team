@@ -1,17 +1,15 @@
 # Design Brief Template
 
-Use this exact heading and table structure for `<chosen output root>/design-brief.md`, or inline in the final response when no `RUN_ID` exists. Empty sections are forbidden; record a refusal, risk, or upstream citation instead.
+Use this exact heading and table structure for `_workspace/{run_id}/design/{slug}/design-brief.md`, or inline in the final response when no `RUN_ID` exists. Empty sections are forbidden; record a refusal, risk, or upstream citation instead.
 
 ```markdown
 # Design Brief
 
-## Subdomain
-- Subdomain: <design-system | ui | icon-illustration | character | environment | logo-branding>
-- Route key: route.subdomain
-- Spec reference: resolved by recipe-agent-team-design-spec from Subdomain
-- Output root: <path from `recipe-agent-team-design-spec` SKILL.md Subdomains table, or "inline final response">
-- Instance ID (character/environment only): <character_id | level_id | n/a>
-- Brief path: <output root>/design-brief.md
+## Output
+- Description: <one-paragraph plain-text description of what is being designed>
+- Slug: <kebab-case identifier, e.g., dashboard, heritage-brand, token-catalog>
+- Output Path: `_workspace/{run_id}/design/<slug>/` (or "inline final response" when no RUN_ID)
+- Pattern Hints: <comma-separated basenames from the spec Pattern Library, e.g., `ui.md`, `design-system.md`; or "none">
 
 ## Core Story
 - Specific user: <one person>
@@ -60,7 +58,7 @@ Use this exact heading and table structure for `<chosen output root>/design-brie
 - Prior pass briefs/artifacts in same RUN_ID: <paths or "n/a">
 
 ## Interview Log
-- Phase identifiers: use exact Discovery Phase names from SKILL.md.
+- Phase identifiers: use exact Discovery Phase names from SKILL.md (Output Capture, Context & Story, Specificity Drill, Trade-off Surface, Assumption Probe, Forced Choice & Priority, Failure Rehearsal).
 - Gap scores: <applicable phase name = 0|1|2; skipped phase = reason>
 - Executed order: <phase names in order>
 - Re-scan triggers: <none | description>
@@ -68,7 +66,7 @@ Use this exact heading and table structure for `<chosen output root>/design-brie
 
 ## Routed By
 - recipe-agent-team-design-interview
-- Reason: <Uncertainty Scan signal -> route.subdomain pick>
+- Reason: <Output Capture summary -> chosen Output description>
 - Requester confirmation: <quote | quick-draft requested>
 - Next step: hand off to `recipe-agent-team-design-spec` with this brief path
 ```

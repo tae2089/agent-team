@@ -18,15 +18,11 @@ metadata:
 
 # Agent Team Compound Learning
 
-Use this recipe at the end of a non-trivial run, task, review, bug fix, architecture decision, or workflow iteration to capture reusable learning for future agents.
+Capture reusable learning after evidence exists. The goal is not archiving; it is making the next similar run easier.
 
-The goal is not to archive everything. The goal is to turn fresh context into a concise, discoverable learning that makes the next similar unit of work easier.
+Use after a non-trivial run, task, review, bug fix, architecture decision, debugging session, or successful planning/design iteration. Do not use for active implementation, active planning/design, uncertain outcomes, trivial fixes, or performing review itself.
 
-## Boundary
-
-Use this recipe after coding, review, compound/integration, debugging, or a successful planning/design iteration that produced a reusable convention or decision. Do not use it to perform those activities; use it only to capture what was learned after evidence exists.
-
-## Artifact Contract
+## Outputs
 
 Write run-scoped capture under the run artifact root when a `RUN_ID` exists:
 
@@ -40,11 +36,7 @@ When the learning is broadly reusable beyond the current run, propose or write a
 docs/solutions/{category}/{slug}.md
 ```
 
-Use `_workspace/{run_id}/compound-learning.md` for session-local synthesis. Use `docs/solutions/` only for verified, reusable knowledge that future workflows should search before planning or coding.
-
-If no run exists, summarize the learning in the final response and defer file creation until there is something durable to preserve.
-
-Use these solution doc categories unless the repository already has a different taxonomy:
+If no run exists, summarize in the final response and defer file creation until there is durable knowledge. Use these solution doc categories unless the repo already has a taxonomy:
 
 - `agent-workflow`: agent coordination, run/task/message/sync, harness behavior
 - `architecture`: module shape, boundaries, design patterns, migration strategy
@@ -55,20 +47,17 @@ Use these solution doc categories unless the repository already has a different 
 - `integration`: external services, APIs, compatibility, cross-module behavior
 - `security`: credentials, permissions, sandboxing, access control
 
-Prefer an existing category over inventing a near-duplicate. Add a new category only when none of these describes the learning.
+Prefer an existing category over a near-duplicate.
 
 ## Workflow
 
 1. Gather evidence from run summary, task records, event log, artifacts, reviews, and the current conversation.
 2. Decide whether the learning is worth capturing. Skip trivial typos, obvious one-line fixes, purely mechanical formatting, or unverified solutions.
 3. Classify the learning as bug track or knowledge track.
-4. Search existing solution docs and relevant artifacts for overlap.
-5. If overlap is high, update or recommend updating the existing doc instead of creating a duplicate.
-6. Write the run-scoped compound learning artifact.
-7. When appropriate, write or propose a `docs/solutions/{category}/{slug}.md` doc.
-8. Surface any refresh or follow-up recommendation with a narrow scope.
-
-## Evidence Sources
+4. Search existing solution docs and relevant artifacts for overlap; update a close match instead of duplicating it.
+5. Write `_workspace/{run_id}/compound-learning.md` when a run exists.
+6. Promote, update, or recommend a `docs/solutions/{category}/{slug}.md` only when the guidance is verified and reusable.
+7. Surface narrow follow-ups or refresh recommendations.
 
 Prefer concrete evidence over memory:
 
@@ -82,7 +71,7 @@ Prefer concrete evidence over memory:
 
 Do not present a solution as verified unless there is evidence that it worked.
 
-## Capture Criteria
+## Capture Decision
 
 Capture when at least one is true:
 
@@ -96,8 +85,6 @@ Capture when at least one is true:
 
 Skip when the work is too local to reuse or the outcome is still uncertain.
 
-## Tracks
-
 Use bug track for failures, regressions, broken tests, runtime issues, integration problems, data issues, security issues, performance issues, and debugging workflows.
 
 Use knowledge track for architecture patterns, design decisions, conventions, workflow practices, tool behavior, testing strategy, and agent coordination lessons.
@@ -108,29 +95,19 @@ Use this structure for `_workspace/{run_id}/compound-learning.md`:
 
 ```markdown
 # Compound Learning
-
 ## Summary
-
 ## Track
-
 ## Evidence
-
 ## What Happened
-
 ## What Worked
-
 ## What Did Not Work
-
 ## Reusable Guidance
-
 ## Future Search Terms
-
 ## Solution Doc Decision
-
 ## Follow-Ups
 ```
 
-Keep the run-scoped artifact concise. Link to source artifacts instead of copying long excerpts.
+Keep it concise. Link to source artifacts instead of copying long excerpts.
 
 `Future Search Terms` should contain terms a future agent is likely to search when facing the same issue. Include concrete command names, file paths, error codes, API names, module names, domain terms, and symptom phrases. Avoid generic terms such as "bug", "fix", "error", "issue", "broken", or "works" unless paired with a concrete identifier.
 
@@ -142,7 +119,7 @@ Keep the run-scoped artifact concise. Link to source artifacts instead of copyin
 
 Include one sentence explaining the decision.
 
-## Solution Doc Format
+## Solution Docs
 
 Use this structure for `docs/solutions/{category}/{slug}.md` when the learning should outlive the run:
 
@@ -155,33 +132,19 @@ source_run: ""
 tags: []
 created: "YYYY-MM-DD"
 ---
-
 # Title
-
 ## Context
-
 ## Symptoms Or Trigger
-
 For bug-track docs, describe the observed symptom. For knowledge-track docs, describe the situation that makes the guidance relevant.
-
 ## Root Cause Or Principle
-
 ## Working Solution
-
 ## What Did Not Work
-
 ## When To Apply
-
 ## Prevention Or Review Checklist
-
 ## References
 ```
 
-## Overlap Check
-
-Before creating a new solution doc, search `docs/solutions/` if it exists.
-
-Compare potential overlap by:
+Before creating a new solution doc, search `docs/solutions/` if it exists. Compare overlap by:
 
 - problem statement or situation
 - root cause or principle
@@ -193,19 +156,11 @@ If most dimensions overlap, update the existing doc or recommend a targeted refr
 
 ## Discoverability
 
-Knowledge compounds only if future agents can find it.
-
-If `docs/solutions/` is created or materially used and root instructions such as `AGENTS.md` or `GEMINI.md` do not mention it, propose the smallest discoverability addition that matches the existing file style.
-
-Apply the discoverability edit only when one of these is true:
-
-- the user explicitly asked to update project instructions or make the learning discoverable
-- the current task already includes editing `AGENTS.md`, `GEMINI.md`, README, or harness instructions
-- the solution doc will be hard to find without a pointer and the repository already uses root instruction pointers for similar resources
+If `docs/solutions/` is created or materially used and root instructions such as `AGENTS.md` or `GEMINI.md` do not mention it, propose the smallest matching pointer. Apply it only when the user asked for discoverability, the current task already edits root instructions, or the repo already uses similar pointers and the doc would be hard to find.
 
 ## Downstream Contract
 
-When a later task should consume the learning, include compact metadata such as:
+When a later task should consume the learning, include compact metadata only:
 
 - `compound_learning_ref`
 - `solution_doc_ref`
@@ -221,7 +176,7 @@ Do not duplicate the full learning in task metadata. Put full prose in artifacts
 | Learning reshapes vocabulary or aliases | `recipe-agent-team-terminology-context` |
 | Learning changes plan, scope, or acceptance | `recipe-agent-team-planning-grill` |
 | Learning changes module shape or interface contract | `recipe-agent-team-architecture-design` |
-| Learning needs a design brief or subdomain spec | `persona-agent-team-designer` (routes to `recipe-agent-team-design-interview` or `recipe-agent-team-design-spec`) |
+| Learning needs a design brief or design artifacts | `persona-agent-team-designer` (routes to `recipe-agent-team-design-interview` or `recipe-agent-team-design-spec`) |
 | Learning needs verification on existing code | review or coding workflow |
 | Learning is read-only state inspection follow-up | `recipe-agent-team-operational-audit` |
 

@@ -1,11 +1,11 @@
 # Marketing / Logo-Branding Reference
 
-Use when discovery selects subdomain `logo-branding`. Produces brand identity specifications: concept, wordmark, symbol, usage rules, and color/typography palette. Text-based — no rendered logo files.
+Pattern for designs whose `Output` describes a brand identity: concept, wordmark, symbol, usage rules, and color/typography palette. Cite this file as a `Pattern Hint` in the brief when applicable. Text-based — no rendered logo files.
 
 ## Output Layout
 
 ```
-_workspace/{run_id}/design/logo-branding/
+_workspace/{run_id}/design/{slug}/   # e.g., {slug}=heritage-brand or logo-v2
 ├── concept.md      # brand essence, positioning, audience
 ├── wordmark.md     # text-only logotype specification
 ├── symbol.md       # icon/symbol/monogram specification
@@ -189,7 +189,7 @@ A logo/branding artifact set passes when:
 - Build the symbol on a grid so reproductions stay consistent.
 - Always define a single-color and reversed variant; real-world placements demand them.
 - Promote palette tokens to a shared `tokens.md` style if logo doubles as product brand.
-- When an upstream `design-system` run produced `_workspace/{run_id}/design/design-system/DESIGN.md`, cite tokens via `{group.name}` inside `palette.md` instead of redefining hex values; add only logo-specific tokens (e.g., reversed variants) as deltas.
+- When an upstream Output produced a token-catalog `DESIGN.md` (Pattern Hint of `design-system.md`), cite tokens via `{group.name}` inside `palette.md` instead of redefining hex values; add only logo-specific tokens (e.g., reversed variants) as deltas.
 
 ## Hand Off
 
@@ -197,5 +197,5 @@ A logo/branding artifact set passes when:
 |---|---|
 | Spec ready, art production starts | Create design/build tasks citing brand tokens; worker uses `recipe-agent-team-worker-checkpoint` |
 | Brand voice conflicts with product copy | Run `recipe-agent-team-terminology-context` |
-| Logo doubles as product brand and no shared token catalog exists | Pause; run `recipe-agent-team-design-interview` with `subdomain: design-system`, then resume `logo-branding` via `recipe-agent-team-design-spec` citing the new `DESIGN.md` |
-| Logo will appear inside product UI | Start a UI subdomain pass using `references/ui.md` for screen integration |
+| Logo doubles as product brand and no shared token catalog exists | Pause; run `recipe-agent-team-design-interview` for an Output of `reusable token catalog` (Pattern Hint `design-system.md`), then resume this Output citing the new `DESIGN.md` as Upstream Input |
+| Logo will appear inside product UI | Run a separate Output pass citing `ui.md` as a Pattern Hint for screen integration |
