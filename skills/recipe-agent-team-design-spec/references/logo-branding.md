@@ -189,6 +189,7 @@ A logo/branding artifact set passes when:
 - Build the symbol on a grid so reproductions stay consistent.
 - Always define a single-color and reversed variant; real-world placements demand them.
 - Promote palette tokens to a shared `tokens.md` style if logo doubles as product brand.
+- When an upstream `design-system` run produced `_workspace/{run_id}/design/design-system/DESIGN.md`, cite tokens via `{group.name}` inside `palette.md` instead of redefining hex values; add only logo-specific tokens (e.g., reversed variants) as deltas.
 
 ## Hand Off
 
@@ -196,4 +197,5 @@ A logo/branding artifact set passes when:
 |---|---|
 | Spec ready, art production starts | Create design/build tasks citing brand tokens; worker uses `recipe-agent-team-worker-checkpoint` |
 | Brand voice conflicts with product copy | Run `recipe-agent-team-terminology-context` |
+| Logo doubles as product brand and no shared token catalog exists | Pause; run `recipe-agent-team-design-interview` with `subdomain: design-system`, then resume `logo-branding` via `recipe-agent-team-design-spec` citing the new `DESIGN.md` |
 | Logo will appear inside product UI | Start a UI subdomain pass using `references/ui.md` for screen integration |

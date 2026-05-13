@@ -36,7 +36,7 @@ Route out of planning grill when a question becomes a different kind of work:
 
 - Use `recipe-agent-team-terminology-context` when the blocker is naming, aliases, overloaded terms, or user/code vocabulary mismatch.
 - Use `recipe-agent-team-architecture-design` when the blocker is backend module shape, interface placement, migration sequence, or implementation task structure.
-- Use `recipe-agent-team-design` when the blocker is a UI/icon/character/environment/logo design brief instead of backend structure.
+- Use `persona-agent-team-designer` (which routes to `recipe-agent-team-design-interview` and `recipe-agent-team-design-spec`) when the blocker is a UI/icon/character/environment/logo/design-system spec instead of backend structure.
 - Use coding workflow only after task contracts and acceptance criteria are concrete enough for evidence-backed completion.
 - Use review workflow when the plan is stable and the concern is correctness, regression risk, or missing verification.
 - Use `recipe-agent-team-compound-learning` after execution when the workflow produced reusable guidance.

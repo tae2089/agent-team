@@ -181,6 +181,7 @@ An icon/illustration system passes when:
 - Use synonyms map to keep search/index aligned without renaming.
 - For large sets, batch by category in `manifest.md` to track progress.
 - Promote icon palette tokens up to product `palette.md` if shared.
+- When an upstream `design-system` run produced `_workspace/{run_id}/design/design-system/DESIGN.md`, reference token names (`{colors.foo}`) inside `usage.md` instead of inlining hex; add icon-only tokens (e.g., stroke weight per scale tier) as deltas.
 
 ## Hand Off
 
@@ -189,3 +190,4 @@ An icon/illustration system passes when:
 | Spec ready, asset production starts | Create design/build tasks citing icon names; worker uses `recipe-agent-team-worker-checkpoint` |
 | Icon set will live inside product UI | Start a UI subdomain pass using `references/ui.md` for screen integration |
 | Naming overlaps with existing component glossary | Run `recipe-agent-team-terminology-context` first |
+| Icon set will share color/sizing with other surfaces and no shared token catalog exists | Pause; run `recipe-agent-team-design-interview` with `subdomain: design-system`, then resume `icon-illustration` via `recipe-agent-team-design-spec` citing the new `DESIGN.md` |

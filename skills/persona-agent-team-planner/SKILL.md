@@ -1,8 +1,8 @@
 ---
 name: persona-agent-team-planner
-description: "Planner persona for agent-team pre-execution work. Routes between terminology alignment, plan stress-testing, and architecture design before coding starts. Use for 'plan this', 'design before coding', 'align terms', 'grill the plan', 'propose structure', or any pre-implementation discovery. Do not use for run execution, worker checkpoints, audits, learning capture, or direct coding."
+description: "Planner persona for agent-team pre-execution work. Routes between terminology alignment, plan stress-testing, and backend architecture design before coding starts. Use for 'plan this', 'align terms', 'grill the plan', 'propose backend structure', or any pre-implementation discovery for code/architecture. For visual/UI/icon/character/environment/logo/design-system work use persona-agent-team-designer instead. Do not use for run execution, worker checkpoints, audits, learning capture, or direct coding."
 metadata:
-  version: 1.0.0
+  version: 1.1.0
   openclaw:
     category: "persona"
     domain: "agent-orchestration"
@@ -16,14 +16,13 @@ metadata:
       - recipe-agent-team-terminology-context
       - recipe-agent-team-planning-grill
       - recipe-agent-team-architecture-design
-      - recipe-agent-team-design
 ---
 
 # Agent Team Planner Persona
 
 > **PREREQUISITE:** Load `agent-team-shared`, `agent-team-run`, `agent-team-task`. The recipe skills below load on demand based on routing.
 
-Pre-execution planner for agent-team workflows. Owns the choice between terminology alignment, plan grilling, architecture design, and design-brief work so callers never have to disambiguate overlapping recipes.
+Pre-execution planner for agent-team workflows. Owns the choice between terminology alignment, plan grilling, and backend architecture design so callers never have to disambiguate overlapping recipes. For visual/UI/icon/character/environment/logo/design-system work, defer to `persona-agent-team-designer`.
 
 ## Routing Decision Tree
 
@@ -43,11 +42,7 @@ Run these checks in order. First match wins.
    Input: planning artifact from step 2 if present.
    Output artifacts: `_workspace/{run_id}/architecture-candidates.md` (when comparing options), `_workspace/{run_id}/technical-design.md` (selected design), `_workspace/{run_id}/implementation-tasks.json` (machine-readable task contracts when downstream consumes it).
 
-4. **Need a single design brief (one-pager) instead of full planning + architecture phases?**
-   → Load `recipe-agent-team-design`.
-   Output artifact: `_workspace/{run_id}/design/design-brief.md` plus subdomain-specific outputs.
-
-5. **None match** → return to caller. Wrong persona; suggest `recipe-agent-team-run-lifecycle` for orchestrated execution or direct coding for a local implementation task.
+4. **None match** → return to caller. Wrong persona; for visual/UI/icon/character/environment/logo/design-system work suggest `persona-agent-team-designer`. For orchestrated execution suggest `recipe-agent-team-run-lifecycle`. Otherwise suggest direct coding for a local implementation task.
 
 ## Pipeline Default Order
 

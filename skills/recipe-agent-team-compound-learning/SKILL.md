@@ -221,7 +221,7 @@ Do not duplicate the full learning in task metadata. Put full prose in artifacts
 | Learning reshapes vocabulary or aliases | `recipe-agent-team-terminology-context` |
 | Learning changes plan, scope, or acceptance | `recipe-agent-team-planning-grill` |
 | Learning changes module shape or interface contract | `recipe-agent-team-architecture-design` |
-| Learning needs a single design brief instead of full design phases | `recipe-agent-team-design` |
+| Learning needs a design brief or subdomain spec | `persona-agent-team-designer` (routes to `recipe-agent-team-design-interview` or `recipe-agent-team-design-spec`) |
 | Learning needs verification on existing code | review or coding workflow |
 | Learning is read-only state inspection follow-up | `recipe-agent-team-operational-audit` |
 

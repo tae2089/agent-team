@@ -19,7 +19,7 @@ Run sub-steps in order. Skip a step only when its artifact already exists and in
 1. **flows.md** — information architecture, navigation graph, primary user journeys, state transitions, error/empty states. Defines *what screens exist and how users move between them*.
 2. **wireframes.md** — per-screen layout, region partitions, content hierarchy, responsive breakpoints. Defines *what each screen contains*.
 3. **components.md** — reusable components extracted from wireframes, props, variants, states, accessibility notes. Defines *what building blocks exist*.
-4. **tokens.md** — color palette, spacing scale, typography ramp, theme variants (light/dark), motion. Defines *visual language constants*.
+4. **tokens.md** — color palette, spacing scale, typography ramp, theme variants (light/dark), motion. Defines *visual language constants*. If an upstream `design-system` subdomain run produced `_workspace/{run_id}/design/design-system/DESIGN.md`, cite it as Upstream Input and reference tokens via `{group.name}` instead of redefining them — keep `tokens.md` as a thin pointer plus any surface-specific additions.
 
 Later sub-artifacts reference earlier ones (wireframes cite flow IDs, components cite wireframe regions, tokens are referenced by components).
 
@@ -217,3 +217,4 @@ A UI design artifact set passes when:
 | UI spec ready, implementation needed | Create coding tasks citing flow/component/token IDs; worker uses `recipe-agent-team-worker-checkpoint` |
 | UI spec depends on missing backend contract | Pause and run `recipe-agent-team-architecture-design` |
 | Terms inside spec ambiguous | Stop and run `recipe-agent-team-terminology-context` first |
+| No shared token catalog exists and other surfaces (logo/icons) will reuse the same tokens | Pause; run `recipe-agent-team-design-interview` with `subdomain: design-system`, then resume `ui` via `recipe-agent-team-design-spec` citing the new `DESIGN.md` |
