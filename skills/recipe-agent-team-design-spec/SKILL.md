@@ -13,6 +13,7 @@ metadata:
       - agent-team-shared
       - agent-team-run
       - agent-team-task
+      - recipe-agent-team-worker-checkpoint
 ---
 
 # Agent Team Design Spec Recipe
@@ -24,7 +25,7 @@ metadata:
 ## Prerequisites
 
 - `RUN_ID` exists. No inline fallback. If `RUN_ID` is missing, stop and ask the orchestrator to create one via `recipe-agent-team-run-lifecycle`; do not hand off to interview for this case.
-- If only an inline brief exists after a run is created, materialize it unchanged to its Output Path as `design-brief.md`, updating only concrete path fields, then resume.
+- If only an inline brief exists after a run is created, the orchestrator or assigned worker must materialize it unchanged to its Output Path as `design-brief.md`, updating only concrete path fields, then resume.
 - `design-brief.md` exists at `_workspace/{run_id}/design/{slug}/design-brief.md`.
 - Brief's `Output` section sets a one-paragraph description, a `Slug`, and an `Output Path`.
 - Brief includes Acceptance source data (constraints, success criteria, priorities, tensions, failure modes).
@@ -78,7 +79,7 @@ Exception: a `DESIGN.md` (token catalog) cites the brief through YAML frontmatte
 
 1. Every artifact exists under the brief's Output Path.
 2. Each artifact addresses at least one Priority Ranking entry and at least one Success Criterion; orphan artifacts are rejected.
-3. Cited patterns are respected for file naming and section structure; deviations are documented in the artifact's citation.
+3. Cited pattern constraints are followed where applicable; deviations from file naming or section structure are documented in the artifact's citation.
 4. Every Pattern Hint listed in the brief is a valid Pattern Library basename and is either used or explicitly rejected with a reason.
 5. When running as an agent-team task, the worker calls `agent-team task complete` with `--artifact` set to the Output Path directory (e.g., `_workspace/{run_id}/design/dashboard/`), and `--evidence` listing every produced filename plus the brief path. A single-file Output (e.g., DESIGN.md) may point `--artifact` at the file directly.
 
@@ -90,7 +91,7 @@ A single `RUN_ID` may host multiple design Outputs (e.g., a token catalog follow
 - consults only the patterns its brief hints at
 - may cite earlier pass artifacts via Upstream Inputs
 
-Passes are sequential. Do not parallelize patterns in the same context window.
+Passes are sequential. Do not parallelize Output passes in the same context window.
 
 ## Do Not
 

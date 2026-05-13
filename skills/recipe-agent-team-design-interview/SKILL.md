@@ -13,11 +13,14 @@ metadata:
       - agent-team-shared
       - agent-team-run
       - agent-team-task
+      - recipe-agent-team-worker-checkpoint
 ---
 
 # Agent Team Design Interview Recipe
 
 > **PREREQUISITE:** Load `agent-team-shared` before any CLI command. `agent-team-run` and `agent-team-task` are required inside an agent-team run.
+
+> **Worker integration:** Inside an agent-team task, the worker must follow `recipe-agent-team-worker-checkpoint` for sync check, inbox handling, task start, and completion. This recipe defines brief generation only.
 
 ## Output Description
 
@@ -26,7 +29,7 @@ This recipe does not enumerate design types. The brief's `Output` field is plain
 - "Solo-fitness app main dashboard screen — onboarded-user view, mobile-first, light/dark themes."
 - "Heritage-tone brand identity — logotype, symbol, palette, usage rules for digital + print."
 - "Reusable token catalog (DESIGN.md alpha) shared across product UI and marketing surfaces."
-- "Playable NPC roster — three characters with skills, animation states, and visual style guide."
+- "Playable NPC character — combat role, skills, animation states, and visual style guide."
 - "Level 1 zone layout — set dressing, lighting beats, traversal flow."
 
 Long, concrete descriptions beat one-word categories.
@@ -47,7 +50,7 @@ Uncertainty Scan → Discovery Phases → Synthesis Gate → Brief.
 
 Use the smallest depth that still produces an actionable brief.
 
-- **Fast path:** all four exist upstream (user/story, output description, priority, constraints). Hybrid-probe missing phases.
+- **Fast path:** the brief's minimum viable fields exist upstream: Output, Core Story, Priority Ranking, Constraints, and Success Criteria. Score covered phases `0` and probe only remaining applicable gaps.
 - **Full path:** request is ambiguous, multiple workers need a durable source of truth, or decisions have meaningful tradeoffs.
 
 Every user-facing probe is a single 4-line block. Korean labels exact; values in the requester's language.
@@ -67,21 +70,21 @@ Rules: one question per turn; no compound questions; `추천 답안` is required
 
 Inspect task body, `planning-grill.md` or `plan.json`, `terminology.md`, prior design artifacts, and the opening request.
 
-Score phases as `2` no capture, `1` partial signal, `0` fully covered upstream. Emit the scan as a Probe Format block with `추천 답안` set to the ordered phase list. Confirm before starting unless the requester explicitly asked for a quick standalone draft.
+Score phases as `2` no capture, `1` partial signal, `0` fully covered upstream. Emit the scan as a Probe Format block with `추천 답안` set to the ordered phase list. Confirm before starting unless the requester explicitly asked for a quick standalone draft. Record any later phase reordering or reopened gap as an Interview Log re-scan trigger; otherwise record `none`.
 
 The first phase is **Output Capture** unless the upstream task body already contains an unambiguous one-paragraph output description (score `0` and cite the source).
 
 ## Discovery Phases
 
-- **Output Capture** — `Output` description (one paragraph), `{slug}` (kebab-case), `Pattern Hints` (zero or more Pattern Library basenames). If output stays vague after two probes, hand off to `recipe-agent-team-planning-grill`.
-- **Context & Story** — `core_story.{user,before,after,pivotal_moment}`. If no concrete user or moment can be named, run planning grill.
+- **Output Capture** — `Output` description, `{slug}`, `Pattern Hints`, brief `Subject` summary. Use literal `none` when no Pattern Hint applies. If output stays vague after two probes, hand off to `recipe-agent-team-planning-grill`.
+- **Context & Story** — `Core Story`, audience, problem-feeling, emulate/avoid references. If no concrete user or moment can be named, run planning grill.
 - **Specificity Drill** — concrete signals, earn-it examples, fake-it examples, rejected adjectives.
-- **Trade-off Surface** — tensions, chosen side, accepted cost.
-- **Assumption Probe** — at least three assumptions with evidence, breakage impact, risk flag.
-- **Forced Choice & Priority** — priority ranking and `first_5_seconds`.
+- **Trade-off Surface** — tensions, chosen side, accepted cost, hard constraints.
+- **Assumption Probe** — at least three assumptions with evidence, breakage impact, risk flag, upstream input citations.
+- **Forced Choice & Priority** — priority ranking, `First 5 Seconds`, success criteria.
 - **Failure Rehearsal** — three failure modes with root cause, earliest signal, mitigation seed.
 
-Probes adapt to the captured Output. Patterns inform shape; the Output description overrides.
+Probes adapt to the captured Output. Pattern Hints name likely artifact patterns only; do not load pattern files during interview, and let the Output description override hint choice.
 
 ## Synthesis Gate
 
@@ -105,7 +108,7 @@ Use `references/brief-template.md`. Empty sections are forbidden; record a refus
 3. Every applicable phase has a capture, refusal, upstream citation, or skip.
 4. Interview Log records gap scores for applicable phases plus skip reasons.
 5. Synthesis Gate confirmation is recorded as a requester quote or `quick-draft requested`.
-6. When running as an agent-team task, completion evidence cites the brief path.
+6. When running as an agent-team task, call `agent-team task complete` with `--artifact` set to the brief path and `--evidence` citing the brief path plus confirmation state.
 
 A brief with only refusals does not pass. Minimum: explicit Output, constraints, success criteria — captured or upstream-cited.
 
@@ -113,7 +116,7 @@ A brief with only refusals does not pass. Minimum: explicit Output, constraints,
 
 - Load pattern reference files; cite their paths only.
 - Produce artifacts (this recipe ends at the brief).
-- Skip Output Capture.
+- Bypass Output Capture without a `0` score and upstream citation.
 - Batch multiple user questions per turn.
 - Force the Output into a single pattern label when the description spans multiple shapes; record all relevant hints instead.
 
@@ -121,7 +124,8 @@ A brief with only refusals does not pass. Minimum: explicit Output, constraints,
 
 | Situation | Hand off |
 | --- | --- |
-| Brief locked, artifacts needed | `recipe-agent-team-design-spec` with brief path |
+| Brief locked, artifacts needed and `RUN_ID` exists | `recipe-agent-team-design-spec` with brief path |
+| Brief locked, artifacts needed but no `RUN_ID` | Ask orchestrator to create a run and materialize the inline brief before spec |
 | Output stays vague after two probes | `recipe-agent-team-planning-grill` |
 | Term ambiguity blocks Output Capture | `recipe-agent-team-terminology-context` |
 | Backend gap surfaces | `recipe-agent-team-architecture-design` |

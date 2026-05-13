@@ -37,7 +37,7 @@ Route out of planning grill when a question becomes a different kind of work:
 - Use `recipe-agent-team-terminology-context` when the blocker is naming, aliases, overloaded terms, or user/code vocabulary mismatch.
 - Use `recipe-agent-team-architecture-design` when the blocker is backend module shape, interface placement, migration sequence, or implementation task structure.
 - Use `persona-agent-team-designer` (which routes to `recipe-agent-team-design-interview` and `recipe-agent-team-design-spec`) when the blocker is a UI/icon/character/environment/logo/design-system spec instead of backend structure.
-- If design interview handed off after repeated Output Capture refusal, lock only the Output description or identify the missing planning term, then return to the designer path; do not restart open-ended design discovery without a new Output signal.
+- If design interview handed off after repeated Output Capture refusal, treat it as upstream planning ambiguity, not design discovery. Record the planning decision or blocker; the caller decides whether to restart designer.
 - Use coding workflow only after task contracts and acceptance criteria are concrete enough for evidence-backed completion.
 - Use review workflow when the plan is stable and the concern is correctness, regression risk, or missing verification.
 - Use `recipe-agent-team-compound-learning` after execution when the workflow produced reusable guidance.

@@ -29,8 +29,8 @@ Run in order. First match wins.
 
 1. **No usable `design-brief.md` exists?**
    → Load `recipe-agent-team-design-interview`.
-   Output: `design-brief.md` at `_workspace/{run_id}/design/{slug}/`.
-   If artifacts are also requested, continue to step 3 after Synthesis Gate confirmation.
+   Output: `design-brief.md` at `_workspace/{run_id}/design/{slug}/`, or inline brief when no `RUN_ID` exists.
+   If artifacts are also requested, ensure `RUN_ID` exists, then continue to step 3 after Synthesis Gate confirmation.
 
 2. **Brief exists but is incomplete, ambiguous, or unconfirmed?**
    → Load `recipe-agent-team-design-interview` to repair, then continue to step 3.

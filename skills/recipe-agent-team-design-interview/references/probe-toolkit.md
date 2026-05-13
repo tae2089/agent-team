@@ -6,6 +6,7 @@ Use these techniques during discovery. Pick the smallest set that resolves the c
 
 | Phase | Primary Techniques |
 | --- | --- |
+| Output Capture | forced choice, specificity demand, constraint inversion |
 | Context & Story | story extraction, specificity demand, 5 Whys cascade |
 | Specificity Drill | specificity demand, anti-reference |
 | Trade-off Surface | trade-off surface, forced choice |

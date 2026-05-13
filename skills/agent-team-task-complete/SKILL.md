@@ -33,7 +33,7 @@ agent-team task complete --task TASK_ID --agent AGENT --evidence TEXT --artifact
 | `--task`     | `task_id`  | yes      | -       | Task to mark `done`.                                                |
 | `--agent`    | `agent`    | yes      | -       | Completing agent; must match the task assignee.                     |
 | `--evidence` | `evidence` | yes      | -       | Verification summary. Mention tests, inspected files, or decisions. |
-| `--artifact` | `artifact` | yes      | -       | Result path, normally under `_workspace/{run_id}/`.                 |
+| `--artifact` | `artifact` | yes      | -       | Result file or directory path, normally under `_workspace/{run_id}/`. |
 | `--force`    | `force`    | no       | `false` | Bypass sync conflict after explicit orchestrator approval.          |
 
 ## Examples

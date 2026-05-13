@@ -70,7 +70,7 @@ Before activating any sub-recipe:
 ## Do Not
 
 - Do not call this persona for runtime execution, monitoring, or recovery.
-- Do not call this persona when a downstream coding agent already has a design artifact.
+- Do not call this persona for visual design refinement when a downstream coding agent already has the needed design brief or artifacts.
 - Do not bypass the decision tree — picking a recipe randomly defeats the persona's purpose.
 - Do not embed planning content directly in task bodies; write artifact files and reference them.
 
