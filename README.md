@@ -120,6 +120,7 @@ The repository includes gwscli-style skills under `skills/`.
 - Recipes: terminology context, planning grill, architecture design, compound learning, run lifecycle, worker checkpoint, and operational audit
 - Persona skills: `persona-agent-team-planner` for terminology/planning/backend architecture routing; `persona-agent-team-designer` for design interview/spec routing
 - Harness skills: `agent-team-codex-harness` and `agent-team-gemini-harness`
+- Backlog: add a cross-reference linter for skill names, handoffs, and artifact paths; current checks cover command contracts, markdown links, and formatting.
 
 Generated harnesses should load `agent-team-shared`, choose a recipe/service skill, then load exact command helper skills for syntax and flags.
 

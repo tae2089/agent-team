@@ -19,6 +19,8 @@ metadata:
 
 Produces a design brief through deep Socratic interview. Routes to one `subdomain` and locks decisions before any artifact production. Hands off to `recipe-agent-team-design-spec` for subdomain artifact generation.
 
+> **PREREQUISITE:** Load `agent-team-shared` before any CLI command. `agent-team-run` and `agent-team-task` are required when operating inside an agent-team run.
+
 ## Use / Skip
 
 Use for design discovery, decision locking, subdomain routing, or brief generation before subdomain spec work.
@@ -27,7 +29,7 @@ Skip backend architecture, terminology cleanup, fuzzy planning, implementation, 
 
 ## Subdomains
 
-Routing target only. This recipe does not load any subdomain reference. Subdomain identifiers must match `recipe-agent-team-design-spec` exactly.
+Routing target only. This recipe does not load any subdomain reference. The canonical subdomain list lives in `recipe-agent-team-design-spec`; keep these identifiers in sync with it.
 
 | Subdomain | Used for |
 | --- | --- |
@@ -89,7 +91,9 @@ Routing signals:
 
 Tiebreaker: when shared-token signals match alongside a surface signal, recommend `design-system` first and run the consumer subdomain as a separate later interview. When two surface signals match, ask the requester to pick one.
 
-Refuse escape: when no signal matches after two routing probe attempts, hand off to `recipe-agent-team-planning-grill` rather than looping.
+Instance disambiguation: when `route.subdomain` is `character`, capture `character_id` (slug or short label) via one Probe Format block before exiting the gate. When `route.subdomain` is `environment`, capture `level_id` the same way. Record the captured ID in the brief's `Instance ID` field; spec recipe rejects briefs missing it for these subdomains.
+
+Refuse escape: when no signal matches after two routing probe attempts, hand off to `recipe-agent-team-planning-grill` with the captured uncertainty list. The grill recipe must return a single `route.subdomain` decision (or explicit `none`) before this recipe resumes; do not re-enter the routing gate without that decision recorded in the brief's Upstream Inputs.
 
 Run discovery phases by descending gap. `gap_size = 0` phases skip probing but must cite the upstream path in the brief.
 
@@ -117,16 +121,16 @@ Only proceed after explicit confirmation, unless the requester asked for a quick
 
 Use `references/brief-template.md` for `design-brief.md` or the inline no-run equivalent. The template is authoritative for headings and tables. The brief records Subdomain, Core Story, Subject, Specificity, Tensions, Assumptions, Priority, First 5 Seconds, Failure Modes, Constraints, References, Success Criteria, Upstream Inputs, Interview Log, and Routed By.
 
-Valid subdomains are `design-system`, `ui`, `icon-illustration`, `character`, `environment`, and `logo-branding`. Empty sections are forbidden; record a refusal, risk, or upstream citation instead.
+Valid subdomains are the canonical `recipe-agent-team-design-spec` subdomains: `design-system`, `ui`, `icon-illustration`, `character`, `environment`, and `logo-branding`. Empty sections are forbidden; record a refusal, risk, or upstream citation instead.
 
 ## Acceptance
 
 1. Brief exists at the subdomain output root, or the final response contains the same structure with no run.
-2. Brief sets a valid subdomain, target output root, and links to the matching `recipe-agent-team-design-spec` reference filename.
+2. Brief sets a valid subdomain and target output root; `recipe-agent-team-design-spec` resolves the matching reference filename.
 3. Every applicable phase has a capture, refusal, upstream citation, or skip.
 4. Interview Log records gap scores for applicable phases plus skip reasons.
-5. Synthesis Gate confirmation is recorded.
-6. In an agent-team task, completion evidence cites the brief path.
+5. Synthesis Gate confirmation is recorded as a requester quote or `quick-draft requested`.
+6. When running as an agent-team task, completion evidence cites the brief path.
 
 A brief with only refusals does not pass. Minimum useful capture is explicit subdomain, constraints, and success criteria, either captured or upstream-cited.
 

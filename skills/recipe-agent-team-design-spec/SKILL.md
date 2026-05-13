@@ -19,19 +19,24 @@ metadata:
 
 Consumes a locked `design-brief.md` and produces subdomain artifacts. Loads exactly one reference per pass. Does not interview.
 
+> **PREREQUISITE:** Load `agent-team-shared` before any CLI command. `agent-team-run` and `agent-team-task` are required when operating inside an agent-team run.
+
+> **Worker integration:** This recipe defines artifact generation only. When run inside an agent-team task, the worker must follow `recipe-agent-team-worker-checkpoint` for sync check, inbox handling, task start, and completion. This recipe replaces neither.
+
 ## Use / Skip
 
 Use when a brief from `recipe-agent-team-design-interview` exists and subdomain artifacts must be generated.
 
-Skip when no brief exists (run the interview recipe first), or when the work is backend architecture, code, review, post-run learning, or rendered binary assets.
+Skip when no brief exists (run the interview recipe first), no `RUN_ID` exists, or when the work is backend architecture, code, review, post-run learning, or rendered binary assets.
 
 ## Prerequisites
 
-- `design-brief.md` exists at a subdomain output root, or the equivalent brief is provided inline.
+- `RUN_ID` exists. This recipe has no inline artifact fallback; if only an inline brief exists, stop and ask the orchestrator to create a run first.
+- `design-brief.md` exists at a subdomain output root.
 - Brief sets a valid `subdomain` from the Subdomains table.
 - Brief includes Acceptance source data (constraints, success criteria, priorities, tensions, failure modes).
 
-If a prerequisite fails, stop and hand off to `recipe-agent-team-design-interview`.
+If `RUN_ID` is missing, stop and ask the orchestrator to create a run first. If another prerequisite fails, hand off to `recipe-agent-team-design-interview` with the specific gap.
 
 ## Subdomains
 
@@ -56,7 +61,8 @@ Before loading any reference, confirm:
 
 - `subdomain` field is one of the six valid values.
 - Output root in the brief matches the Subdomains table for that subdomain.
-- Synthesis Gate confirmation is recorded.
+- For `character` and `environment` subdomains, brief's `Instance ID` field is set (`character_id` or `level_id`) and the output root path interpolates the captured ID.
+- Synthesis Gate confirmation is recorded as either a requester quote or `quick-draft requested`.
 
 Mismatch or missing fields → stop and hand off to interview recipe with the specific gap.
 
@@ -78,7 +84,7 @@ Exception: `design-system` `DESIGN.md` cites the brief through YAML frontmatter 
 2. The chosen reference's acceptance criteria all pass.
 3. Artifacts cite the brief using the citation rule in the chosen reference.
 4. No reference other than the brief's `subdomain` reference was loaded.
-5. In an agent-team task, completion evidence cites the brief path plus the produced artifact paths.
+5. When running as an agent-team task, the worker calls `agent-team task complete` with `--artifact` set to the subdomain output directory path (e.g., `_workspace/{run_id}/design/ui/`), and `--evidence` listing every produced sub-artifact filename plus the brief path. The `design-system` subdomain may instead point `--artifact` at `DESIGN.md` directly.
 
 ## Multi-Subdomain Runs
 

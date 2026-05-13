@@ -8,8 +8,9 @@ Use this exact heading and table structure for `<chosen output root>/design-brie
 ## Subdomain
 - Subdomain: <design-system | ui | icon-illustration | character | environment | logo-branding>
 - Route key: route.subdomain
-- Reference file: references/<subdomain>.md
-- Output root: <path from SKILL.md Subdomains table, or "inline final response">
+- Spec reference: resolved by recipe-agent-team-design-spec from Subdomain
+- Output root: <path from `recipe-agent-team-design-spec` SKILL.md Subdomains table, or "inline final response">
+- Instance ID (character/environment only): <character_id | level_id | n/a>
 - Brief path: <output root>/design-brief.md
 
 ## Core Story
@@ -67,7 +68,7 @@ Use this exact heading and table structure for `<chosen output root>/design-brie
 
 ## Routed By
 - recipe-agent-team-design-interview
-- Reason: <Core Story -> route.subdomain pick>
+- Reason: <Uncertainty Scan signal -> route.subdomain pick>
 - Requester confirmation: <quote | quick-draft requested>
 - Next step: hand off to `recipe-agent-team-design-spec` with this brief path
 ```

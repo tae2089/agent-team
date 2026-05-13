@@ -19,7 +19,7 @@ metadata:
 
 # Agent Team Designer Persona
 
-> **PREREQUISITE:** Load `agent-team-shared`, `agent-team-run`, `agent-team-task`. The interview and spec recipes load on demand based on routing.
+> **PREREQUISITE:** Load `agent-team-shared` first, then `agent-team-run` and `agent-team-task`. The interview and spec recipes load on demand based on routing.
 
 Owns the choice between deep design interview and subdomain spec production so callers never have to disambiguate the two recipes.
 
@@ -27,22 +27,20 @@ Owns the choice between deep design interview and subdomain spec production so c
 
 Run these checks in order. First match wins.
 
-1. **No usable `design-brief.md` exists, or the requested subdomain is not known yet?**
+1. **Requested subdomain is not known yet, or no `design-brief.md` exists?**
    → Load `recipe-agent-team-design-interview`.
-   Output artifact: `_workspace/{run_id}/design/{subdomain}/design-brief.md`.
+   Output artifact: `design-brief.md` under the output root selected from the spec subdomain table.
+   If artifacts are also requested, continue to step 3 after Synthesis Gate.
 
-2. **Brief exists, locked, and subdomain artifacts are missing?**
+2. **Brief exists but is incomplete, ambiguous, or unconfirmed?**
+   → Load `recipe-agent-team-design-interview` to repair the brief, then continue to step 3.
+
+3. **Brief exists, locked, and subdomain artifacts are missing or requested?**
    → Load `recipe-agent-team-design-spec`.
    Input: the existing brief.
    Output artifacts: subdomain-specific files under the brief's output root.
 
-3. **Brief exists but is incomplete, ambiguous, or unconfirmed?**
-   → Load `recipe-agent-team-design-interview` to repair the brief, then return to step 2.
-
-4. **Need both interview and spec in one session?**
-   → Run interview first; on Synthesis Gate confirmation, load the spec recipe with the brief path.
-
-5. **None match** → return to caller. Wrong persona; suggest `persona-agent-team-planner` (terminology/planning/architecture) or direct coding.
+4. **None match** → return to caller. Wrong persona; suggest `persona-agent-team-planner` (terminology/planning/architecture) or direct coding.
 
 ## Pipeline Default Order
 
@@ -55,9 +53,9 @@ Skip the interview only when a usable brief already exists. Skip the spec when t
 Before activating any sub-recipe:
 
 - If the user wants durable tracking, execution, or worker artifacts, confirm `RUN_ID` is set or ask the orchestrator to create one through `recipe-agent-team-run-lifecycle`.
-- If there is no active run and the user only wants design guidance, do not invent a run. Let the selected recipe use its no-run final-response fallback.
+- If there is no active run and the user only wants design guidance, do not invent a run. Use the interview recipe's no-run final-response fallback; spec artifact production requires a run.
 - This persona does not create runs, dispatch workers, or close runs.
-- When a run exists, produced artifacts live under `_workspace/{run_id}/design/{subdomain}/` and are recorded as task `artifact` paths through normal `agent-team task complete` from a worker.
+- When a run exists, produced artifacts live under the output root defined by the chosen `recipe-agent-team-design-spec` subdomain reference and are recorded as task `artifact` paths through normal `agent-team task complete` from a worker.
 
 ## Multi-Subdomain Sessions
 
@@ -91,4 +89,4 @@ When a design effort spans multiple subdomains (e.g., `design-system` first, the
 - If two checks both match, prefer the earlier step. An incomplete brief poisons spec output.
 - Cite brief paths in every task body so workers can re-read the durable input.
 - For multi-subdomain efforts, recommend `design-system` first when downstream surfaces will share tokens.
-- Keep persona-level decisions in a short note at the top of the chosen recipe's output artifact (one line: "routed by persona-agent-team-designer: chose X because Y").
+- Record persona-level decisions in the brief's `Routed By` section or the spec artifact's citation/routing metadata; do not add text before required top headings.

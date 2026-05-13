@@ -38,7 +38,8 @@ Token version pin: top of `DESIGN.md` frontmatter must include `design_md_versio
 `DESIGN.md` must start with YAML frontmatter. Cite the brief through
 `routed_by`, `subdomain`, and `brief` fields in frontmatter instead of a
 top-line HTML comment. When no `RUN_ID` exists, cite `brief: inline final
-response`.
+response`. The brief is routed by `recipe-agent-team-design-interview`; the
+`DESIGN.md` artifact is routed by `recipe-agent-team-design-spec`.
 
 ## Sub-Artifact Templates
 
