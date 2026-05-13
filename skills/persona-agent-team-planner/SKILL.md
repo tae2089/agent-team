@@ -55,7 +55,7 @@ Skip earlier steps only when their output artifact already exists or input is un
 Before activating any sub-recipe:
 
 - If the user wants durable tracking, execution, follow-up, or worker artifacts, confirm `RUN_ID` is set or ask the orchestrator to create one through `recipe-agent-team-run-lifecycle`.
-- If there is no active run and the user only wants planning/design guidance, do not invent a run. Let the selected recipe use its no-run final-response fallback.
+- If there is no active run and the user only wants planning or backend architecture guidance, do not invent a run. Let the selected recipe use its no-run final-response fallback.
 - This persona does not create runs, dispatch workers, or close runs.
 - When a run exists, produced artifacts live under `_workspace/{run_id}/` and are recorded as task `artifact` paths through normal `agent-team task complete` from a worker.
 
@@ -78,4 +78,4 @@ Before activating any sub-recipe:
 
 - If two checks both match, prefer the earlier step. Terminology drift poisons downstream planning.
 - Cite artifact paths in every task body so workers can re-read the durable input.
-- Keep persona-level decisions in a short note at the top of the chosen recipe's output artifact (one line: "routed by persona-agent-team-planner: chose X because Y").
+- Record persona-level decisions in the chosen artifact's routing/decision section when one exists; otherwise add a short note after the required top heading, not before it.

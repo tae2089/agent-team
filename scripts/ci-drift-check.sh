@@ -9,6 +9,8 @@ export GOCACHE
 
 cd "$ROOT_DIR"
 
+bash scripts/check-skill-crossrefs.sh
+
 go test ./internal/cli -run 'Test(CommandSpecMatchesCobraTree|HelperSkillDocsMatchSpec|ServiceSkillDocsExist|SkillDocsAvoidInvalidBooleanShellExamples|ErrorRecoveryDocsMatchSpec|HarnessSandboxPermissionDocsAreWired|HarnessRuntimeContextDocsAreWired|AgentTeamHarnessSkillsRequireRuntimeStateProtocol|HarnessSkillDogfoodExamplesRecordClosedState)'
 
 go run ./cmd/agent-team schema export > "$TMP_DIR/schema.json"

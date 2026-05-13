@@ -31,12 +31,12 @@ Skip when no brief exists (run the interview recipe first), no `RUN_ID` exists, 
 
 ## Prerequisites
 
-- `RUN_ID` exists. This recipe has no inline artifact fallback; if only an inline brief exists, stop and ask the orchestrator to create a run first.
+- `RUN_ID` exists. This recipe has no inline artifact fallback. If only an inline brief exists, stop, ask the orchestrator to create a run, materialize the inline brief to the chosen output root as `design-brief.md`, then resume.
 - `design-brief.md` exists at a subdomain output root.
 - Brief sets a valid `subdomain` from the Subdomains table.
 - Brief includes Acceptance source data (constraints, success criteria, priorities, tensions, failure modes).
 
-If `RUN_ID` is missing, stop and ask the orchestrator to create a run first. If another prerequisite fails, hand off to `recipe-agent-team-design-interview` with the specific gap.
+If `RUN_ID` is missing, stop and ask the orchestrator to create a run first. If an inline brief must be materialized, write it unchanged except for concrete Output root and Brief path fields. If another prerequisite fails, hand off to `recipe-agent-team-design-interview` with the specific gap.
 
 ## Subdomains
 
