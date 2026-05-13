@@ -118,7 +118,7 @@ The repository includes gwscli-style skills under `skills/`.
 - Service skills: `agent-team-run`, `agent-team-task`, `agent-team-inbox`, `agent-team-sync`, `agent-team-ops`
 - Command helper skills: one per CLI command
 - Recipes: terminology context, planning grill, architecture design, compound learning, run lifecycle, worker checkpoint, and operational audit
-- Persona skills: `persona-agent-team-planner` for pre-execution routing across terminology, planning grill, and architecture design recipes
+- Persona skills: `persona-agent-team-planner` for terminology/planning/backend architecture routing; `persona-agent-team-designer` for design interview/spec routing
 - Harness skills: `agent-team-codex-harness` and `agent-team-gemini-harness`
 
 Generated harnesses should load `agent-team-shared`, choose a recipe/service skill, then load exact command helper skills for syntax and flags.

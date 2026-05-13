@@ -52,7 +52,7 @@ Uncertainty Scan → Routing Gate → Discovery Phases → Synthesis Gate → Br
 
 Use the smallest depth that still produces an actionable brief.
 
-- **Fast path:** upstream inputs already identify user/story, subdomain, priority, and constraints. Ask only high-gap probes; cite upstream material for skipped phases.
+- **Fast path:** all four exist upstream: user/story, subdomain, priority, and constraints. If only some exist, use hybrid probing for missing phases.
 - **Full path:** request is ambiguous, multiple workers need a durable source of truth, or decisions have meaningful tradeoffs.
 
 Every user-facing probe is a single 4-line block. Use these Korean labels exactly; write values in the requester's language.
@@ -89,7 +89,7 @@ Routing signals:
 
 Tiebreaker: when shared-token signals match alongside a surface signal, recommend `design-system` first and run the consumer subdomain as a separate later interview. When two surface signals match, ask the requester to pick one.
 
-Refuse escape: when no signal matches after one probe attempt, hand off to `recipe-agent-team-planning-grill` rather than looping.
+Refuse escape: when no signal matches after two routing probe attempts, hand off to `recipe-agent-team-planning-grill` rather than looping.
 
 Run discovery phases by descending gap. `gap_size = 0` phases skip probing but must cite the upstream path in the brief.
 
@@ -115,7 +115,7 @@ Only proceed after explicit confirmation, unless the requester asked for a quick
 
 ## Brief Contract
 
-Use `references/brief-template.md` for `design-brief.md` or the inline no-run equivalent. The template is authoritative for headings and tables. The brief records Domain, Core Story, Subject, Specificity, Tensions, Assumptions, Priority, First 5 Seconds, Failure Modes, Constraints, References, Success Criteria, Upstream Inputs, Interview Log, and Routed By.
+Use `references/brief-template.md` for `design-brief.md` or the inline no-run equivalent. The template is authoritative for headings and tables. The brief records Subdomain, Core Story, Subject, Specificity, Tensions, Assumptions, Priority, First 5 Seconds, Failure Modes, Constraints, References, Success Criteria, Upstream Inputs, Interview Log, and Routed By.
 
 Valid subdomains are `design-system`, `ui`, `icon-illustration`, `character`, `environment`, and `logo-branding`. Empty sections are forbidden; record a refusal, risk, or upstream citation instead.
 
@@ -144,7 +144,7 @@ A brief with only refusals does not pass. Minimum useful capture is explicit sub
 | Situation | Hand off |
 | --- | --- |
 | Brief locked, subdomain artifacts needed | `recipe-agent-team-design-spec` with brief path |
-| Routing refuses after one probe attempt | `recipe-agent-team-planning-grill` |
+| Routing refuses after two probe attempts | `recipe-agent-team-planning-grill` |
 | Term ambiguity blocks routing | `recipe-agent-team-terminology-context` |
 | Backend gap surfaces | `recipe-agent-team-architecture-design` |
 | Multi-surface token sharing detected | This recipe again with `design-system` first, then a consumer subdomain pass |

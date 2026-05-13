@@ -27,7 +27,7 @@ Owns the choice between deep design interview and subdomain spec production so c
 
 Run these checks in order. First match wins.
 
-1. **No usable `design-brief.md` exists for the requested subdomain?**
+1. **No usable `design-brief.md` exists, or the requested subdomain is not known yet?**
    → Load `recipe-agent-team-design-interview`.
    Output artifact: `_workspace/{run_id}/design/{subdomain}/design-brief.md`.
 

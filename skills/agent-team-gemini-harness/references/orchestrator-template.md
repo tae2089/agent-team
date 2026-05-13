@@ -38,7 +38,7 @@ description: "{Domain} Gemini harness orchestrator. Routes {domain} build, updat
 
 - Runtime coordination is skill-first: activate runtime recipe/service/helper skills, then use daemonless `agent-team` commands only through those helper contracts.
 - Activate `agent-team-shared` first for global runtime behavior.
-- Use recipes for workflow shape: `recipe-agent-team-terminology-context` for shared vocabulary artifacts, `recipe-agent-team-planning-grill` for pre-execution plan hardening, `recipe-agent-team-architecture-design` for design artifacts before coding, `recipe-agent-team-compound-learning` for reusable learning capture, `recipe-agent-team-run-lifecycle` for full runs, `recipe-agent-team-worker-checkpoint` for worker checkpoints, and `recipe-agent-team-operational-audit` for audit/status/cleanup.
+- Use recipes/personas for workflow shape: `recipe-agent-team-terminology-context` for shared vocabulary artifacts, `recipe-agent-team-planning-grill` for pre-execution plan hardening, `recipe-agent-team-architecture-design` for backend design before coding, `persona-agent-team-designer` for visual/UI/icon/character/environment/logo/design-system work, `recipe-agent-team-compound-learning` for reusable learning capture, `recipe-agent-team-run-lifecycle` for full runs, `recipe-agent-team-worker-checkpoint` for worker checkpoints, and `recipe-agent-team-operational-audit` for audit/status/cleanup.
 - For exact command behavior, activate the relevant helper skill, such as `agent-team-run-create`, `agent-team-task-create`, `agent-team-task-complete`, `agent-team-sync-check`, `agent-team-message-send`, or `agent-team-event-log`.
 - Use service skills only for navigation: `agent-team-run`, `agent-team-task`, `agent-team-inbox`, `agent-team-sync`, and `agent-team-ops`.
 - Setup, edit, and audit requests do not probe runtime state.
@@ -58,14 +58,15 @@ description: "{Domain} Gemini harness orchestrator. Routes {domain} build, updat
 3. Load only relevant references.
 4. Activate `recipe-agent-team-terminology-context` when user language, code terms, or agent task vocabulary need alignment.
 5. Activate `recipe-agent-team-planning-grill` when the plan, terminology, task boundaries, or acceptance criteria need hardening.
-6. Activate `recipe-agent-team-architecture-design` when the workflow needs design artifacts before coding.
-7. Activate `recipe-agent-team-run-lifecycle`, then resolve or create the orchestrator-owned runtime context for orchestrated harness execution.
-8. Create active runtime tasks when needed using exact command helper skills, omit explicit task IDs by default, and capture returned task IDs.
-9. Execute direct work or invoke bounded specialist tasks when allowed.
-10. Collect returned summaries, task records, inbox messages, evidence, and artifacts.
-11. Activate `recipe-agent-team-compound-learning` when the workflow produced reusable learning for future runs.
-12. Retry, block, request clarification, or complete.
-13. Report final artifacts, unresolved risks, and reload reminder if files changed.
+6. Activate `recipe-agent-team-architecture-design` when the workflow needs backend design artifacts before coding.
+7. Activate `persona-agent-team-designer` when the workflow needs visual/UI/icon/character/environment/logo/design-system brief or spec work.
+8. Activate `recipe-agent-team-run-lifecycle`, then resolve or create the orchestrator-owned runtime context for orchestrated harness execution.
+9. Create active runtime tasks when needed using exact command helper skills, omit explicit task IDs by default, and capture returned task IDs.
+10. Execute direct work or invoke bounded specialist tasks when allowed.
+11. Collect returned summaries, task records, inbox messages, evidence, and artifacts.
+12. Activate `recipe-agent-team-compound-learning` when the workflow produced reusable learning for future runs.
+13. Retry, block, request clarification, or complete.
+14. Report final artifacts, unresolved risks, and reload reminder if files changed.
 ```
 
 ## Data Flow

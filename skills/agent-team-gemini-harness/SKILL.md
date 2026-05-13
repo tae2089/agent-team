@@ -346,7 +346,7 @@ After building or materially changing a harness, update `GEMINI.md` with a conci
 
 **Runtime State:**
 - Activate `agent-team-shared` first for global runtime rules.
-- Use recipe skills for workflow shape: `recipe-agent-team-terminology-context` for shared vocabulary artifacts, `recipe-agent-team-planning-grill` for pre-execution plan hardening, `recipe-agent-team-architecture-design` for design artifacts before coding, `recipe-agent-team-compound-learning` for reusable learning capture, `recipe-agent-team-run-lifecycle` for full runs, `recipe-agent-team-worker-checkpoint` for worker checkpoints, and `recipe-agent-team-operational-audit` for audit/status/cleanup.
+- Use recipe/persona skills for workflow shape: `recipe-agent-team-terminology-context` for shared vocabulary artifacts, `recipe-agent-team-planning-grill` for pre-execution plan hardening, `recipe-agent-team-architecture-design` for backend design before coding, `persona-agent-team-designer` for visual/UI/icon/character/environment/logo/design-system work, `recipe-agent-team-compound-learning` for reusable learning capture, `recipe-agent-team-run-lifecycle` for full runs, `recipe-agent-team-worker-checkpoint` for worker checkpoints, and `recipe-agent-team-operational-audit` for audit/status/cleanup.
 - Use service skills for navigation: `agent-team-run`, `agent-team-task`, `agent-team-inbox`, `agent-team-sync`, and `agent-team-ops`.
 - Use exact command helper skills for command syntax and flags, for example `agent-team-task-complete`, `agent-team-sync-check`, `agent-team-message-send`, or `agent-team-event-log`.
 - `RUN_ID` and `TASK_ID` are orchestrator-owned internal context, not required user input.
